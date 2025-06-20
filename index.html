@@ -500,6 +500,127 @@
       background: var(--primary-dark);
       transform: translateY(-5px);
     }
+    .contact-container {
+      display: block; /* Changed from grid */
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 3rem auto 0; /* Added margin to separate from contact cards */
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: rgba(1, 4, 9, 0.3);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(31, 111, 235, 0.4);
+    }
+    /* Add these new styles */
+    .form-feedback {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .form-feedback i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-feedback.success {
+      background: rgba(63, 185, 80, 0.1);
+      border: 1px solid var(--success);
+      color: var(--text-primary);
+    }
+
+    .form-feedback.error {
+      background: rgba(248, 81, 73, 0.1);
+      border: 1px solid var(--danger);
+      color: var(--text-primary);
+    }
+
+    .form-feedback button {
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-feedback button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Loading spinner for the button */
+    .fa-spinner {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* Responsive styles */
     @media (max-width: 768px) {
@@ -709,6 +830,7 @@
     <h2>Get In Touch</h2>
     <p style="text-align: center; margin-bottom: 3rem;">I'm currently open to new opportunities and collaborations. Feel free to reach out!</p>
 
+    <!-- Contact Cards Grid -->
     <div class="contact-grid">
       <div class="contact-card hidden">
         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
@@ -733,6 +855,28 @@
         <h3>Instagram</h3>
         <a href="https://instagram.com/hassanrazamusic" target="_blank">@hassanrazamusic</a>
       </div>
+    </div>
+
+    <!-- Contact Form (now below the cards) -->
+    <div class="contact-form hidden">
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">Your Message</label>
+          <textarea id="message" name="message" class="form-control" required></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
     </div>
   </section>
 </main>
@@ -799,6 +943,61 @@
   document.querySelectorAll('.hidden').forEach(el => {
     observer.observe(el);
   });
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Get elements
+    const form = this;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerHTML;
+
+    // Validate
+    if (!form.name.value.trim()) return showTempAlert(form, 'Please enter your name');
+    if (!/^\S+@\S+\.\S+$/.test(form.email.value)) return showTempAlert(form, 'Please enter a valid email');
+    if (!form.message.value.trim()) return showTempAlert(form, 'Please enter your message');
+
+    // Loading state
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+
+    try {
+      // Using Formspree (replace with your ID)
+      const response = await fetch("https://formspree.io/f/mzzgarzr", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      });
+
+      if (response.ok) {
+        form.innerHTML = `
+        <div class="form-feedback success">
+          <i class="fas fa-check-circle"></i>
+          <h3>Message Sent!</h3>
+          <p>I'll respond to you soon.</p>
+        </div>
+      `;
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      form.innerHTML = `
+      <div class="form-feedback error">
+        <i class="fas fa-times-circle"></i>
+        <h3>Error</h3>
+        <p>${error.message || 'Please email me directly at codehassanraza@gmail.com'}</p>
+      </div>
+    `;
+    }
+  });
+
+  // Helper function (add this to your script)
+  function showTempAlert(form, message) {
+    const alert = document.createElement('div');
+    alert.className = 'form-feedback error';
+    alert.innerHTML = `<p>${message}</p>`;
+    form.prepend(alert);
+    setTimeout(() => alert.remove(), 3000);
+  }
 
   // Dynamic header height adjustment
   function adjustHeaderSpacing() {
