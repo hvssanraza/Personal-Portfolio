@@ -1,25 +1,45 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer Portfolio</title>
+  <title>Hassan Raza | AI Engineer & Developer</title>
   <link rel="icon" type="image/png" href="Assets/Black%20White%20Minimal%20Simple%20Modern%20Creative%20Studio%20Ego%20Logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
+    :root {
+      --primary: #58a6ff;
+      --primary-dark: #1f6feb;
+      --secondary: #238636;
+      --bg-dark: #0d1117;
+      --bg-darker: #010409;
+      --card-bg: #161b22;
+      --text-primary: #c9d1d9;
+      --text-secondary: #8b949e;
+      --border: #30363d;
+      --success: #3fb950;
+      --warning: #d29922;
+      --danger: #f85149;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
+
     body {
-      background-color: #0d1117;
-      color: #c9d1d9;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
+      min-height: 100vh;
     }
+
     #particles-js {
       position: fixed;
       width: 100%;
@@ -27,156 +47,530 @@
       z-index: 0;
       top: 0;
       left: 0;
+      opacity: 0.6;
     }
-    header, .section, .hero, footer {
-      position: relative;
-      z-index: 1;
-    }
+
+    /* FIXED HEADER STYLES */
     header {
-      padding: 2rem;
-      background-color: #161b22cc;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      background-color: rgba(22, 27, 34, 0.95);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #30363d;
-      animation: fadeInDown 1s ease-out;
+      border-bottom: 1px solid var(--border);
+      animation: fadeInDown 0.8s ease-out;
+      backdrop-filter: blur(8px);
+      z-index: 1000;
     }
-    header h1 {
-      font-size: 1.75rem;
-      font-weight: 800;
-    }
-    nav a {
-      margin-left: 1rem;
-      color: #c9d1d9;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    nav a:hover {
-      color: #58a6ff;
-      transform: scale(1.05);
-    }
+
+    /* ADDED SPACING FOR FIXED HEADER */
     .hero {
-      padding: 6rem 2rem;
+      padding: 8rem 5% 6rem;
+      margin-top: 80px; /* This matches header height */
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2rem;
+      gap: 3rem;
       text-align: center;
-      animation: fadeIn 1.5s ease-out;
+      animation: fadeIn 1s ease-out;
+      min-height: 90vh;
+      justify-content: center;
     }
-    .hero-content {
-      max-width: 700px;
-    }
-    .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, #58a6ff, #1f6feb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      color: #8b949e;
-    }
-    .hero-image {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background-color: #21262d;
-      border: 6px solid #58a6ff;
-      background-image: url('Assets/IMG_1288.JPG'); /* Replace with your image URL */
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      box-shadow: 0 0 25px rgba(88, 166, 255, 0.3);
-      animation: pulseGlow 3s infinite ease-in-out;
-    }
-    .hero-image:hover {
-      transform: scale(1.08) rotate(1deg);
-      box-shadow: 0 0 40px rgba(88, 166, 255, 0.7);
-    }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 25px rgba(88, 166, 255, 0.3); }
-      50% { box-shadow: 0 0 40px rgba(88, 166, 255, 0.6); }
-    }
+
     .section {
-      padding: 4rem 2rem;
+      padding: 6rem 5%;
       animation: fadeIn 1s ease-out;
     }
+
+    /* Rest of your existing CSS remains unchanged */
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .hero-image {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background-color: var(--card-bg);
+      border: 6px solid var(--primary);
+      background-image: url('Assets/IMG_1288.JPG');
+      background-size: cover;
+      background-position: center;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 30px rgba(88, 166, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+              to bottom right,
+              rgba(88, 166, 255, 0) 0%,
+              rgba(88, 166, 255, 0.1) 50%,
+              rgba(88, 166, 255, 0) 100%
+      );
+      transform: rotate(30deg);
+      animation: shine 6s infinite linear;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(88, 166, 255, 0.7);
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(31, 111, 235, 0.3);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(31, 111, 235, 0.4);
+    }
+
+    .cta-button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cta-button:hover::after {
+      opacity: 1;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      border-radius: 2px;
+    }
+
     .projects, .skills {
       display: grid;
       gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
+
     .card {
-      background: #161b22cc;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
-    .card h3 {
-      margin-bottom: 0.5rem;
-      color: #58a6ff;
-    }
-    footer {
+      background: var(--card-bg);
       padding: 2rem;
-      text-align: center;
-      background: #161b22cc;
+      border-radius: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      border-color: var(--primary);
+    }
+
+    .card h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+      flex-grow: 1;
+    }
+
+    .card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card .tag {
+      background: rgba(88, 166, 255, 0.1);
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .card .links {
+      display: flex;
+      gap: 1rem;
+      margin-top: auto;
+    }
+
+    .card .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .card .links a:hover {
+      color: var(--primary-dark);
+      transform: translateX(5px);
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-item {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .skill-item:hover {
+      transform: scale(1.05);
+      border-color: var(--primary);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .skill-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+    }
+
+    .skill-item h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
       margin-top: 3rem;
-      border-top: 1px solid #30363d;
     }
-    a {
-      color: #58a6ff;
-      transition: color 0.3s ease;
+
+    .contact-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
     }
-    a:hover {
-      color: #1f6feb;
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
     }
+
+    .contact-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(88, 166, 255, 0.1);
+    }
+
+    .contact-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .contact-card a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-card a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 3rem 5%;
+      text-align: center;
+      background: rgba(22, 27, 34, 0.9);
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    footer p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes fadeInDown {
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    @media (max-width: 480px) {
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 25px rgba(88, 166, 255, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(88, 166, 255, 0.6); }
+    }
+
+    @keyframes shine {
+      0% { transform: rotate(30deg) translate(-10%, -10%); }
+      100% { transform: rotate(30deg) translate(10%, 10%); }
+    }
+
+    /* Scroll animation */
+    .hidden {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 99;
+      box-shadow: 0 4px 15px rgba(31, 111, 235, 0.3);
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
       header {
+        padding: 1.5rem;
         flex-direction: column;
         align-items: flex-start;
+        gap: 1rem;
       }
+
       nav {
-        margin-top: 1rem;
         width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+        justify-content: flex-start;
+        gap: 1rem;
       }
+
+      .hero {
+        padding: 6rem 1.5rem 4rem;
+        margin-top: 120px; /* Adjusted for mobile header height */
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .hero-image {
+        width: 180px;
+        height: 180px;
+      }
+
+      .section {
+        padding: 4rem 1.5rem;
+      }
+
+      .section h2 {
+        font-size: 2rem;
+      }
+
+      .projects, .skills {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        margin-top: 140px; /* Further adjustment for smaller screens */
+      }
+
       .hero h2 {
         font-size: 2rem;
       }
-      .hero p {
-        font-size: 1rem;
-      }
+
       .hero-image {
         width: 150px;
         height: 150px;
       }
-      .section {
-        padding: 2rem 1rem;
+
+      .cta-button {
+        padding: 0.7rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
 <div id="particles-js"></div>
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
 <header>
   <h1>Hassan Raza</h1>
   <nav>
@@ -187,94 +581,322 @@
   </nav>
 </header>
 
-<section class="hero">
-  <div class="hero-image"></div>
-  <div class="hero-content">
-    <h2>Hello, I'm Hassan Raza</h2>
-    <p>A tech enthusiast and aspiring AI engineer with a unique blend of creative and technical skills.</p>
-  </div>
-</section>
-
-<section id="about" class="section">
-  <h2>About Me</h2>
-  <p>Currently pursuing a Bachelor's in Artificial Intelligence, I have a strong foundation in programming, design, and problem-solving. My journey spans over 6 years of experience in graphic design and 4 years in music production, which fuel my creative thinking and user-centric approach. Over the past 2 years, I’ve been dedicated to learning and building with Python, C++, HTML, CSS, and JavaScript, focusing on projects that blend code, design, and intelligence.
-
-    I’m especially passionate about the intersection of AI and design—creating intuitive, impactful experiences powered by smart technologies. Whether it's building an AI-driven application, crafting clean front-end interfaces, or designing engaging visuals, I strive to push boundaries and bring ideas to life.
-
-    I’m always open to collaborations, knowledge-sharing, and connecting with fellow creatives, coders, and innovators. Let’s build the future together.</p>
-</section>
-
-<section id="projects" class="section">
-  <h2>Projects</h2>
-  <div class="projects">
-    <div class="card">
-      <h3>Console-Based Gaming Suite</h3>
-      <p> This is a C++-based application that provides a collection of classic games playable through a text-based console interface. Designed as an educational project, it demonstrates core programming concepts such as object-oriented design, file handling, user input/output, and modular code structure. The suite features a user account system that stores data like usernames and scores in text files (e.g., users.txt), enabling a personalized gaming experience. With a clean, menu-driven navigation system and support for CMake for cross-platform building, this project offers a practical way to explore game logic implementation and console-based UI development.</p>
-      <a href="https://github.com/hvssanraza/Console-Based-Gaming-Suite" target="_blank">View Project</a>
+<main>
+  <section class="hero">
+    <div class="hero-image"></div>
+    <div class="hero-content">
+      <h2>Hello, I'm Hassan Raza</h2>
+      <p>AI Engineer & Full-Stack Developer with a passion for creating intelligent solutions and beautiful interfaces.</p>
+      <a href="#contact" class="cta-button">Get In Touch</a>
     </div>
-    <div class="card">
-      <h3>E‑Commerce Store</h3>
-      <p>This C++ console application simulates a basic e-commerce platform featuring two user roles—customers and administrators—to manage shopping activities entirely via text-based navigation. Customers can register, log in, browse products, manage a shopping cart, complete purchases, and view order history. Administrators have elevated capabilities: viewing site-wide balance, managing inventory (adding products), processing orders (marking shipped), and updating admin credentials. Built with modular functions and data persistence through file-based I/O (users.txt, products.txt, orders.txt, etc.), the project includes input validation (e.g., verifying email format and password complexity), intuitive menu-driven navigation, and small UI enhancements like color-coded text and loading animations. Designed as an educational tool, it clearly demonstrates fundamentals of user authentication, file manipulation, role-based functionality, and console UI in C++.</p>
-      <a href="https://github.com/hvssanraza/ECommerceStore" target="_blank">View Project</a>
+  </section>
 
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <div class="hidden">
+      <p>I'm a passionate Artificial Intelligence student with a strong foundation in software development and a creative background in design. My journey in technology combines technical expertise with artistic sensibility, allowing me to build solutions that are both powerful and user-friendly.</p>
+
+      <p>Currently pursuing my Bachelor's in AI, I've spent the last several years honing my skills in Python, C++, and web technologies while applying them to real-world projects. My background includes:</p>
+
+      <ul style="margin: 1.5rem 0; list-style-position: inside;">
+        <li style="margin-bottom: 0.5rem;">6+ years of graphic design experience</li>
+        <li style="margin-bottom: 0.5rem;">4 years in music production and sound engineering</li>
+        <li style="margin-bottom: 0.5rem;">2+ years focused on AI and software development</li>
+      </ul>
+
+      <p>What excites me most is the intersection of artificial intelligence and human-centered design. I believe the most impactful technologies are those that combine cutting-edge algorithms with intuitive interfaces and thoughtful user experiences.</p>
+
+      <p>When I'm not coding, you can find me composing music, designing visuals, or exploring the latest advancements in machine learning. I'm always open to collaborating on interesting projects or discussing new ideas at the intersection of technology and creativity.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="skills" class="section">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="card"><h3>HTML/CSS</h3></div>
-    <div class="card"><h3>JavaScript</h3></div>
-    <div class="card"><h3>C++</h3></div>
-    <div class="card"><h3>Python</h3></div>
-    <div class="card"><h3>MySQL</h3></div>
-  </div>
-</section>
+  <section id="projects" class="section">
+    <h2>Featured Projects</h2>
+    <div class="projects">
+      <div class="card hidden">
+        <h3>Console-Based Gaming Suite</h3>
+        <div class="tags">
+          <span class="tag">C++</span>
+          <span class="tag">OOP</span>
+          <span class="tag">File I/O</span>
+        </div>
+        <p>A collection of classic games implemented in C++ with a console interface. Features a user account system with persistent data storage, modular architecture, and clean text-based UI. Demonstrates core programming concepts through practical implementation.</p>
+        <div class="links">
+          <a href="https://github.com/hvssanraza/Console-Based-Gaming-Suite" target="_blank">
+            <i class="fab fa-github"></i> View Code
+          </a>
+        </div>
+      </div>
 
-<section id="contact" class="section">
-  <h2>Contact</h2>
-  <p>Email: <a href="codehassanraza@gmail.com" target="_blank">codehassanraza@gmail.com</a></p>
-  <p>GitHub: <a href="https://github.com/hvssanraza" target="_blank">@hvssanraza</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/codehassanraza" target="_blank">Hassan Raza</a></p>
-  <p>Instagram: <a href="https://instagram.com/hassanrazamusic" target="_blank">@hassanrazamusic</a></p>
+      <div class="card hidden">
+        <h3>E-Commerce Store Simulation</h3>
+        <div class="tags">
+          <span class="tag">C++</span>
+          <span class="tag">Data Structures</span>
+          <span class="tag">User Auth</span>
+        </div>
+        <p>A complete e-commerce platform simulation with customer and admin roles. Includes product management, shopping cart, order processing, and data persistence. Built with attention to input validation, security, and user experience in a console environment.</p>
+        <div class="links">
+          <a href="https://github.com/hvssanraza/ECommerceStore" target="_blank">
+            <i class="fab fa-github"></i> View Code
+          </a>
+        </div>
+      </div>
 
-</section>
+      <div class="card hidden">
+        <h3>Portfolio Website</h3>
+        <div class="tags">
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Responsive</span>
+        </div>
+        <p>This responsive portfolio website showcasing my projects and skills. Features modern design elements, smooth animations, and interactive components. Built with semantic HTML, CSS animations, and vanilla JavaScript for optimal performance.</p>
+        <div class="links">
+          <a href="#" target="_blank">
+            <i class="fab fa-github"></i> View Code
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section id="skills" class="section">
+    <h2>Technical Skills</h2>
+    <div class="skills-container">
+      <div class="skill-item hidden">
+        <div class="skill-icon"><i class="fab fa-html5"></i></div>
+        <h3>HTML5</h3>
+      </div>
+
+      <div class="skill-item hidden">
+        <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+        <h3>CSS3</h3>
+      </div>
+
+      <div class="skill-item hidden">
+        <div class="skill-icon"><i class="fab fa-js"></i></div>
+        <h3>JavaScript</h3>
+      </div>
+
+      <div class="skill-item hidden">
+        <div class="skill-icon"><i class="fab fa-python"></i></div>
+        <h3>Python</h3>
+      </div>
+
+      <div class="skill-item hidden">
+        <div class="skill-icon"><i class="fas fa-code"></i></div>
+        <h3>C++</h3>
+      </div>
+
+      <div class="skill-item hidden">
+        <div class="skill-icon"><i class="fas fa-database"></i></div>
+        <h3>MySQL</h3>
+      </div>
+
+      <div class="skill-item hidden">
+        <div class="skill-icon"><i class="fas fa-robot"></i></div>
+        <h3>AI/ML</h3>
+      </div>
+
+      <div class="skill-item hidden">
+        <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
+        <h3>UI/UX Design</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Get In Touch</h2>
+    <p style="text-align: center; margin-bottom: 3rem;">I'm currently open to new opportunities and collaborations. Feel free to reach out!</p>
+
+    <div class="contact-grid">
+      <div class="contact-card hidden">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <h3>Email</h3>
+        <a href="mailto:codehassanraza@gmail.com">codehassanraza@gmail.com</a>
+      </div>
+
+      <div class="contact-card hidden">
+        <div class="contact-icon"><i class="fab fa-github"></i></div>
+        <h3>GitHub</h3>
+        <a href="https://github.com/hvssanraza" target="_blank">@hvssanraza</a>
+      </div>
+
+      <div class="contact-card hidden">
+        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+        <h3>LinkedIn</h3>
+        <a href="https://linkedin.com/in/codehassanraza" target="_blank">Hassan Raza</a>
+      </div>
+
+      <div class="contact-card hidden">
+        <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+        <h3>Instagram</h3>
+        <a href="https://instagram.com/hassanrazamusic" target="_blank">@hassanrazamusic</a>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
+  <div class="social-links">
+    <a href="https://github.com/hvssanraza" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/codehassanraza" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://instagram.com/hassanrazamusic" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:codehassanraza@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
   <p>&copy; 2025 Hassan Raza. All rights reserved.</p>
 </footer>
 
 <script>
+  // Smooth scrolling for navigation links with header offset
   document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      const headerHeight = document.querySelector('header').offsetHeight;
+
+      window.scrollTo({
+        top: targetElement.offsetTop - headerHeight,
         behavior: 'smooth'
       });
+
+      // Update URL without refreshing
+      history.pushState(null, null, targetId);
     });
   });
 
+  // Back to top button
+  const backToTopButton = document.querySelector('.back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('active');
+    } else {
+      backToTopButton.classList.remove('active');
+    }
+  });
+
+  backToTopButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.hidden').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Dynamic header height adjustment
+  function adjustHeaderSpacing() {
+    const header = document.querySelector('header');
+    const hero = document.querySelector('.hero');
+    if (header && hero) {
+      const headerHeight = header.offsetHeight;
+      hero.style.marginTop = `${headerHeight}px`;
+    }
+  }
+
+  // Run on load and resize
+  window.addEventListener('load', adjustHeaderSpacing);
+  window.addEventListener('resize', adjustHeaderSpacing);
+
+  // Particle.js configuration
   particlesJS("particles-js", {
     "particles": {
-      "number": { "value": 70 },
+      "number": {
+        "value": 80,
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
       "color": { "value": "#58a6ff" },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.4 },
-      "size": { "value": 2.5 },
-      "line_linked": { "enable": true, "distance": 130, "color": "#58a6ff", "opacity": 0.4, "width": 1 },
-      "move": { "enable": true, "speed": 2.5 }
+      "shape": {
+        "type": "circle",
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 1,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 3,
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 2,
+          "size_min": 0.1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#58a6ff",
+        "opacity": 0.2,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 2,
+        "direction": "none",
+        "random": true,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": true,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
     },
     "interactivity": {
       "detect_on": "canvas",
       "events": {
-        "onhover": { "enable": true, "mode": "grab" },
-        "onclick": { "enable": true, "mode": "push" }
+        "onhover": {
+          "enable": true,
+          "mode": "grab"
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push"
+        },
+        "resize": true
       },
       "modes": {
-        "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
-        "push": { "particles_nb": 4 }
+        "grab": {
+          "distance": 140,
+          "line_linked": {
+            "opacity": 0.5
+          }
+        },
+        "push": {
+          "particles_nb": 4
+        }
       }
     },
     "retina_detect": true
