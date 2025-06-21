@@ -6,7 +6,7 @@
   <title>Hassan Raza | AI Developer & Engineer</title>
   <link rel="icon" type="image/png" href="Assets/Black%20White%20Minimal%20Simple%20Modern%20Creative%20Studio%20Ego%20Logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
     :root {
@@ -24,7 +24,6 @@
       --transition: all 0.4s ease;
     }
 
-    /* Light mode variables */
     [data-theme="light"] {
       --bg-primary: #F5F5FA;
       --bg-secondary: #FFFFFF;
@@ -60,13 +59,13 @@
       position: fixed;
       width: 100%;
       height: 100%;
-      z-index: 0;
+      z-index: 1; /* Changed to 1 to stay below content */
       top: 0;
       left: 0;
       opacity: 0.6;
+      pointer-events: none; /* This prevents particles from intercepting clicks */
     }
 
-    /* Modern Header */
     header {
       position: fixed;
       top: 0;
@@ -136,7 +135,6 @@
       width: 100%;
     }
 
-    /* Theme Toggle */
     .theme-toggle {
       background: none;
       border: none;
@@ -157,7 +155,6 @@
       background-color: var(--accent-transparent);
     }
 
-    /* Hero Section */
     .hero {
       padding: 10rem 5% 6rem;
       margin-top: 80px;
@@ -169,11 +166,12 @@
       min-height: 100vh;
       justify-content: center;
       position: relative;
+      z-index: 2; /* Above particles */
     }
 
     .hero-content {
       max-width: 800px;
-      z-index: 1;
+      z-index: 3;
     }
 
     .hero h2 {
@@ -207,6 +205,7 @@
       box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
       position: relative;
       overflow: hidden;
+      z-index: 2;
     }
 
     [data-theme="light"] .hero-image {
@@ -274,10 +273,10 @@
       box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
     }
 
-    /* Sections */
     .section {
       padding: 6rem 5%;
       position: relative;
+      z-index: 2; /* Above particles */
     }
 
     .section h2 {
@@ -302,7 +301,6 @@
       border-radius: 2px;
     }
 
-    /* Projects */
     .projects {
       display: grid;
       gap: 2rem;
@@ -380,7 +378,6 @@
       transform: translateX(5px);
     }
 
-    /* Skills */
     .skills-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -415,7 +412,6 @@
       font-weight: 600;
     }
 
-    /* Contact */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -470,7 +466,6 @@
       text-decoration: underline;
     }
 
-    /* Contact Form */
     .contact-form {
       background: var(--bg-secondary);
       padding: 2.5rem;
@@ -535,20 +530,21 @@
       box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
     }
 
-    /* Footer */
     footer {
       padding: 3rem 5%;
       text-align: center;
       background: var(--bg-secondary);
       margin-top: 3rem;
       border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 2; /* Above particles */
     }
 
     .footer-name {
       font-family: 'Syncopate', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       color: var(--text-primary);
     }
 
@@ -557,25 +553,42 @@
       justify-content: center;
       gap: 1.5rem;
       margin-bottom: 2rem;
+      position: relative;
+      z-index: 3; /* Above particles and footer */
     }
 
     .social-links a {
-      color: var(--text-primary);
+      color: var(--accent);
       font-size: 1.5rem;
       transition: var(--transition);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: var(--accent-transparent);
+      text-decoration: none;
+      pointer-events: auto; /* Ensure clickable */
     }
 
     .social-links a:hover {
-      color: var(--accent);
+      color: var(--bg-primary);
+      background-color: var(--accent);
       transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
+    }
+
+    [data-theme="light"] .social-links a:hover {
+      box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
     }
 
     footer p {
       color: var(--text-secondary);
       font-size: 0.9rem;
+      margin-top: 1rem;
     }
 
-    /* Back to top button */
     .back-to-top {
       position: fixed;
       bottom: 2rem;
@@ -593,8 +606,9 @@
       transition: var(--transition);
       opacity: 0;
       visibility: hidden;
-      z-index: 99;
+      z-index: 1000; /* Above everything */
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      border: none;
     }
 
     .back-to-top.active {
@@ -607,7 +621,6 @@
       transform: translateY(-5px);
     }
 
-    /* Animations */
     .hidden {
       opacity: 0;
       transform: translateY(30px);
@@ -619,7 +632,6 @@
       transform: translateY(0);
     }
 
-    /* Responsive styles */
     @media (max-width: 768px) {
       header {
         padding: 1rem;
@@ -681,6 +693,16 @@
 
       .cta-button {
         padding: 0.7rem 1.5rem;
+      }
+
+      .social-links {
+        gap: 1rem;
+      }
+
+      .social-links a {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -744,7 +766,7 @@
         </div>
         <p>A comprehensive collection of classic games implemented in C++ with a console interface. Features a secure user account system with persistent data storage, ensuring game progress and user profiles are saved. Demonstrates strong command over object-oriented programming principles and efficient file handling.</p>
         <div class="links">
-          <a href="https://github.com/hvssanraza/Console-Based-Gaming-Suite" target="_blank">
+          <a href="https://github.com/hvssanraza/Console-Based-Gaming-Suite" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-github"></i> View Code
           </a>
         </div>
@@ -760,7 +782,7 @@
         </div>
         <p>A complete e-commerce platform simulation with customer and admin roles. Includes product management, shopping cart, order processing, and data persistence. Built with rigorous input validation and robust data persistence, prioritizing security and a fluid user experience within a console environment.</p>
         <div class="links">
-          <a href="https://github.com/hvssanraza/ECommerceStore" target="_blank">
+          <a href="https://github.com/hvssanraza/ECommerceStore" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-github"></i> View Code
           </a>
         </div>
@@ -776,7 +798,7 @@
         </div>
         <p>This responsive portfolio website showcasing my projects and skills. Features modern design elements, smooth animations, and interactive components. Built with semantic HTML, advanced CSS techniques, and vanilla JavaScript for optimal performance and maintainability.</p>
         <div class="links">
-          <a href="#" target="_blank">
+          <a href="#" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-github"></i> View Code
           </a>
         </div>
@@ -843,19 +865,19 @@
       <div class="contact-card hidden">
         <div class="contact-icon"><i class="fab fa-github"></i></div>
         <h3>GitHub</h3>
-        <a href="https://github.com/hvssanraza" target="_blank">@hvssanraza</a>
+        <a href="https://github.com/hvssanraza" target="_blank" rel="noopener noreferrer">@hvssanraza</a>
       </div>
 
       <div class="contact-card hidden">
-        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+        <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
         <h3>LinkedIn</h3>
-        <a href="https://linkedin.com/in/codehassanraza" target="_blank">Hassan Raza</a>
+        <a href="https://linkedin.com/in/codehassanraza" target="_blank" rel="noopener noreferrer">Hassan Raza</a>
       </div>
 
       <div class="contact-card hidden">
         <div class="contact-icon"><i class="fab fa-instagram"></i></div>
         <h3>Instagram</h3>
-        <a href="https://instagram.com/hassanrazamusic" target="_blank">@hassanrazamusic</a>
+        <a href="https://instagram.com/hassanrazamusic" target="_blank" rel="noopener noreferrer">@hassanrazamusic</a>
       </div>
     </div>
 
@@ -885,10 +907,18 @@
 <footer>
   <div class="footer-name">Hassan Raza</div>
   <div class="social-links">
-    <a href="https://github.com/hvssanraza" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://linkedin.com/in/codehassanraza" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://instagram.com/hassanrazamusic" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="mailto:codehassanraza@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/hvssanraza" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/codehassanraza" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://instagram.com/hassanrazamusic" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="mailto:codehassanraza@gmail.com" aria-label="Email">
+      <i class="fas fa-envelope"></i>
+    </a>
   </div>
   <p>&copy; <span id="currentYear"></span> Hassan Raza. All rights reserved.</p>
 </footer>
@@ -998,7 +1028,6 @@
     }
   });
 
-  // Helper function
   function showTempAlert(form, message) {
     const alert = document.createElement('div');
     alert.className = 'form-feedback error';
@@ -1007,7 +1036,6 @@
     setTimeout(() => alert.remove(), 3000);
   }
 
-  // Dynamic header height adjustment
   function adjustHeaderSpacing() {
     const header = document.querySelector('header');
     const hero = document.querySelector('.hero');
@@ -1017,7 +1045,6 @@
     }
   }
 
-  // Run on load and resize
   window.addEventListener('load', adjustHeaderSpacing);
   window.addEventListener('resize', adjustHeaderSpacing);
 
@@ -1047,6 +1074,13 @@
       themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
       localStorage.setItem('theme', 'dark');
     }
+  });
+
+  // Make sure social links are clickable
+  document.querySelectorAll('.social-links a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent any parent elements from interfering
+    });
   });
 
   // Particle.js configuration
