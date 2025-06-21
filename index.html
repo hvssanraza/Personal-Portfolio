@@ -697,151 +697,99 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Timeline - Mobile First Approach */
     .timeline {
       position: relative;
       max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem 0;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
 
     .timeline::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
+      left: 1.5rem; /* Moved closer to content on mobile */
+      width: 3px;
       height: 100%;
       background: var(--accent);
-      border-radius: 2px;
     }
 
     .timeline-item {
       position: relative;
-      margin-bottom: 3rem;
-      width: 100%;
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
+      margin-bottom: 2.5rem;
+      padding-left: 3rem; /* Space for timeline */
     }
 
     .timeline-date {
-      position: absolute;
-      width: 120px;
-      top: 10px;
+      display: block;
       font-weight: 600;
       color: var(--accent);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-date {
-      left: calc(50% - 130px);
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(even) .timeline-date {
-      right: calc(50% - 130px);
-      text-align: left;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
     }
 
     .timeline-content {
-      position: relative;
-      padding: 1.5rem;
+      padding: 1.25rem;
       background: var(--bg-secondary);
-      border-radius: 0.5rem;
+      border-radius: 0.75rem;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      margin-left: calc(50% + 20px);
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-      margin-right: calc(50% + 20px);
-    }
-
-    .timeline-content h3 {
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    .timeline-content p {
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      left: -10px;
-      width: 0;
-      height: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-right: 10px solid var(--bg-secondary);
-    }
-
-    .timeline-item:nth-child(even) .timeline-content::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      right: -10px;
-      width: 0;
-      height: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-left: 10px solid var(--bg-secondary);
     }
 
     .timeline-item::after {
       content: '';
       position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 20px;
-      height: 20px;
+      top: 0.5rem;
+      left: 1.25rem;
+      width: 12px;
+      height: 12px;
       background: var(--accent);
       border-radius: 50%;
-      z-index: 1;
+      transform: translateX(-50%);
     }
 
-    @media (max-width: 768px) {
+    /* Desktop View */
+    @media (min-width: 768px) {
       .timeline::before {
-        left: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        padding-left: 0;
+        width: 100%;
       }
 
       .timeline-date {
-        position: relative;
-        width: auto;
-        top: 0;
-        left: 0 !important;
-        right: auto !important;
-        text-align: left !important;
-        margin-bottom: 0.5rem;
+        position: absolute;
+        width: 140px;
+        top: 10px;
       }
 
-      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(odd) .timeline-date {
+        left: calc(50% - 160px);
+        text-align: right;
+      }
+
+      .timeline-item:nth-child(even) .timeline-date {
+        right: calc(50% - 160px);
+        text-align: left;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content {
+        margin-left: calc(50% + 30px);
+      }
+
       .timeline-item:nth-child(even) .timeline-content {
-        margin-left: 60px;
-        margin-right: 0;
+        margin-right: calc(50% + 30px);
       }
 
       .timeline-item::after {
-        left: 30px;
-      }
-
-      .timeline-item:nth-child(odd) .timeline-content::before,
-      .timeline-item:nth-child(even) .timeline-content::before {
-        left: -10px;
-        right: auto;
-        border-right: 10px solid var(--bg-secondary);
-        border-left: none;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
-
     .github-calendar {
       max-width: 900px;
       margin: 2rem auto;
