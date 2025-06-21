@@ -24,6 +24,22 @@
       --danger: #f85149;
     }
 
+    /* Light theme variables */
+    [data-theme="light"] {
+      --primary: #1a73e8;
+      --primary-dark: #0d5bbc;
+      --secondary: #34a853;
+      --bg-dark: #f5f5f5;
+      --bg-darker: #e0e0e0;
+      --card-bg: #ffffff;
+      --text-primary: #202124;
+      --text-secondary: #5f6368;
+      --border: #dadce0;
+      --success: #34a853;
+      --warning: #f9ab00;
+      --danger: #d93025;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -38,6 +54,7 @@
       position: relative;
       overflow-x: hidden;
       min-height: 100vh;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     #particles-js {
@@ -65,6 +82,53 @@
       animation: fadeInDown 0.8s ease-out;
       backdrop-filter: blur(8px);
       z-index: 1000;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    [data-theme="light"] header {
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Theme toggle button */
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      margin-left: 1rem;
+    }
+
+    .theme-toggle:hover {
+      background-color: rgba(88, 166, 255, 0.1);
+    }
+
+    .theme-toggle i {
+      transition: transform 0.3s ease;
+    }
+
+    [data-theme="light"] .theme-toggle i.fa-sun {
+      display: none;
+    }
+
+    [data-theme="light"] .theme-toggle i.fa-moon {
+      display: inline-block;
+    }
+
+    .theme-toggle i.fa-moon {
+      display: none;
+    }
+
+    [data-theme="light"] .theme-toggle i.fa-sun {
+      display: inline-block;
     }
 
     /* ADDED SPACING FOR FIXED HEADER */
@@ -99,6 +163,7 @@
     nav {
       display: flex;
       gap: 1.5rem;
+      align-items: center;
     }
 
     nav a {
@@ -259,6 +324,15 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      position: relative;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
     }
 
     .card:hover {
@@ -272,6 +346,7 @@
       color: var(--primary);
       font-size: 1.5rem;
       font-weight: 600;
+      text-align: center;
     }
 
     .card p {
@@ -285,6 +360,7 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-bottom: 1.5rem;
+      justify-content: center;
     }
 
     .card .tag {
@@ -294,12 +370,16 @@
       border-radius: 50px;
       font-size: 0.8rem;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
 
     .card .links {
       display: flex;
       gap: 1rem;
       margin-top: auto;
+      justify-content: center;
     }
 
     .card .links a {
@@ -411,6 +491,11 @@
       margin-top: 3rem;
       border-top: 1px solid var(--border);
       backdrop-filter: blur(8px);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    [data-theme="light"] footer {
+      background-color: rgba(255, 255, 255, 0.9);
     }
 
     .social-links {
@@ -536,6 +621,10 @@
       color: var(--text-primary);
       font-size: 1rem;
       transition: all 0.3s ease;
+    }
+
+    [data-theme="light"] .form-control {
+      background: rgba(224, 224, 224, 0.3);
     }
 
     .form-control:focus {
@@ -699,6 +788,10 @@
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun" style="display: none;"></i>
+    </button>
   </nav>
 </header>
 
@@ -707,7 +800,7 @@
     <div class="hero-image"></div>
     <div class="hero-content">
       <h2>Hello, I'm Hassan Raza</h2>
-      <p>A tech enthusiast and aspiring Al engineer with a unique blend of creative and technical skills.</p>
+      <p>A tech enthusiast and aspiring AI engineer with a unique blend of creative and technical skills.</p>
       <a href="#contact" class="cta-button">Get In Touch</a>
     </div>
   </section>
@@ -735,13 +828,17 @@
     <h2>Featured Projects</h2>
     <div class="projects">
       <div class="card hidden">
+        <div class="card-icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
         <h3>Console-Based Gaming Suite</h3>
         <div class="tags">
-          <span class="tag">C++</span>
-          <span class="tag">OOP</span>
-          <span class="tag">File I/O</span>
+          <span class="tag"><i class="fas fa-plus"></i> C++</span>
+          <span class="tag"><i class="fas fa-object-group"></i> OOP</span>
+          <span class="tag"><i class="fas fa-file-export"></i> File I/O</span>
+          <span class="tag"><i class="fas fa-database"></i> Data Persistence</span>
         </div>
-        <p>A collection of classic games implemented in C++ with a console interface. Features a user account system with persistent data storage, modular architecture, and clean text-based UI. Demonstrates core programming concepts through practical implementation.</p>
+        <p>A comprehensive collection of classic games implemented in C++ with a console interface. Features include modular architecture, clean text-based UI, and persistent data storage for user accounts and game progress.</p>
         <div class="links">
           <a href="https://github.com/hvssanraza/Console-Based-Gaming-Suite" target="_blank">
             <i class="fab fa-github"></i> View Code
@@ -750,13 +847,17 @@
       </div>
 
       <div class="card hidden">
+        <div class="card-icon">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
         <h3>E-Commerce Store Simulation</h3>
         <div class="tags">
-          <span class="tag">C++</span>
-          <span class="tag">Data Structures</span>
-          <span class="tag">User Auth</span>
+          <span class="tag"><i class="fas fa-plus"></i> C++</span>
+          <span class="tag"><i class="fas fa-layer-group"></i> Data Structures</span>
+          <span class="tag"><i class="fas fa-user-shield"></i> User Auth</span>
+          <span class="tag"><i class="fas fa-boxes"></i> Inventory Management</span>
         </div>
-        <p>A complete e-commerce platform simulation with customer and admin roles. Includes product management, shopping cart, order processing, and data persistence. Built with attention to input validation, security, and user experience in a console environment.</p>
+        <p>A complete e-commerce platform simulation with customer and admin roles. Includes product management, shopping cart, order processing, and data persistence. Built with attention to input validation and security.</p>
         <div class="links">
           <a href="https://github.com/hvssanraza/ECommerceStore" target="_blank">
             <i class="fab fa-github"></i> View Code
@@ -765,13 +866,16 @@
       </div>
 
       <div class="card hidden">
+        <div class="card-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
         <h3>Portfolio Website</h3>
         <div class="tags">
-          <span class="tag">HTML/CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Responsive</span>
+          <span class="tag"><i class="fab fa-html5"></i> HTML/CSS</span>
+          <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+          <span class="tag"><i class="fas fa-mobile-alt"></i> Responsive</span>
         </div>
-        <p>This responsive portfolio website showcasing my projects and skills. Features modern design elements, smooth animations, and interactive components. Built with semantic HTML, CSS animations, and vanilla JavaScript for optimal performance.</p>
+        <p>This responsive portfolio website showcasing my projects and skills. Features modern design elements, smooth animations, and interactive components. Built with semantic HTML, CSS animations, and vanilla JavaScript.</p>
         <div class="links">
           <a href="#" target="_blank">
             <i class="fab fa-github"></i> View Code
@@ -892,22 +996,53 @@
 </footer>
 
 <script>
+  // Theme toggle functionality
+  const themeToggle = document.querySelector('.theme-toggle');
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+
+  // Set initial theme
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  // Update icon based on current theme
+  if (currentTheme === 'light') {
+    document.querySelector('.theme-toggle i.fa-moon').style.display = 'inline-block';
+    document.querySelector('.theme-toggle i.fa-sun').style.display = 'none';
+  } else {
+    document.querySelector('.theme-toggle i.fa-moon').style.display = 'none';
+    document.querySelector('.theme-toggle i.fa-sun').style.display = 'inline-block';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+
+    // Toggle icon visibility
+    document.querySelectorAll('.theme-toggle i').forEach(icon => {
+      icon.style.display = icon.style.display === 'none' ? 'inline-block' : 'none';
+    });
+  });
+
   // Smooth scrolling for navigation links with header offset
   document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      const headerHeight = document.querySelector('header').offsetHeight;
+    if (anchor.getAttribute('href').startsWith('#')) {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        const headerHeight = document.querySelector('header').offsetHeight;
 
-      window.scrollTo({
-        top: targetElement.offsetTop - headerHeight,
-        behavior: 'smooth'
+        window.scrollTo({
+          top: targetElement.offsetTop - headerHeight,
+          behavior: 'smooth'
+        });
+
+        // Update URL without refreshing
+        history.pushState(null, null, targetId);
       });
-
-      // Update URL without refreshing
-      history.pushState(null, null, targetId);
-    });
+    }
   });
 
   // Back to top button
@@ -943,6 +1078,8 @@
   document.querySelectorAll('.hidden').forEach(el => {
     observer.observe(el);
   });
+
+  // Contact form handling
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
