@@ -24,6 +24,21 @@
       --transition: all 0.4s ease;
     }
 
+    /* Light mode variables */
+    [data-theme="light"] {
+      --bg-primary: #F5F5FA;
+      --bg-secondary: #FFFFFF;
+      --bg-tertiary: #EAEAF0;
+      --text-primary: #1A1A22;
+      --text-secondary: #4A4A55;
+      --text-accent: #6C6C7D;
+      --accent: #0066CC;
+      --accent-dark: #004D99;
+      --accent-transparent: rgba(0, 102, 204, 0.1);
+      --border: #D0D0D8;
+      --shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -38,6 +53,7 @@
       position: relative;
       overflow-x: hidden;
       min-height: 100vh;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     #particles-js {
@@ -64,6 +80,10 @@
       border-bottom: 1px solid var(--border);
       z-index: 1000;
       transition: var(--transition);
+    }
+
+    [data-theme="light"] header {
+      background-color: rgba(245, 245, 250, 0.9);
     }
 
     .header-logo {
@@ -114,6 +134,27 @@
     nav a:hover::after,
     nav a.active::after {
       width: 100%;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+
+    .theme-toggle:hover {
+      color: var(--accent);
+      background-color: var(--accent-transparent);
     }
 
     /* Hero Section */
@@ -168,6 +209,10 @@
       overflow: hidden;
     }
 
+    [data-theme="light"] .hero-image {
+      box-shadow: 0 0 30px rgba(0, 102, 204, 0.3);
+    }
+
     .hero-image::before {
       content: '';
       position: absolute;
@@ -185,6 +230,15 @@
       animation: shine 6s infinite linear;
     }
 
+    [data-theme="light"] .hero-image::before {
+      background: linear-gradient(
+              to bottom right,
+              rgba(0, 102, 204, 0) 0%,
+              rgba(0, 102, 204, 0.1) 50%,
+              rgba(0, 102, 204, 0) 100%
+      );
+    }
+
     @keyframes shine {
       0% { transform: rotate(30deg) translate(-10%, -10%); }
       100% { transform: rotate(30deg) translate(10%, 10%); }
@@ -193,6 +247,10 @@
     .hero-image:hover {
       transform: scale(1.05);
       box-shadow: 0 0 50px rgba(0, 191, 255, 0.7);
+    }
+
+    [data-theme="light"] .hero-image:hover {
+      box-shadow: 0 0 50px rgba(0, 102, 204, 0.5);
     }
 
     .cta-button {
@@ -486,6 +544,14 @@
       border-top: 1px solid var(--border);
     }
 
+    .footer-name {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
     .social-links {
       display: flex;
       justify-content: center;
@@ -630,6 +696,9 @@
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
   </nav>
 </header>
 
@@ -814,6 +883,7 @@
 </main>
 
 <footer>
+  <div class="footer-name">Hassan Raza</div>
   <div class="social-links">
     <a href="https://github.com/hvssanraza" target="_blank"><i class="fab fa-github"></i></a>
     <a href="https://linkedin.com/in/codehassanraza" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -830,6 +900,8 @@
   // Smooth scrolling for navigation links with header offset
   document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+      if (this.classList.contains('theme-toggle')) return;
+
       e.preventDefault();
       const targetId = this.getAttribute('href');
       const targetElement = document.querySelector(targetId);
@@ -948,6 +1020,34 @@
   // Run on load and resize
   window.addEventListener('load', adjustHeaderSpacing);
   window.addEventListener('resize', adjustHeaderSpacing);
+
+  // Theme toggle functionality
+  const themeToggle = document.querySelector('.theme-toggle');
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const currentTheme = localStorage.getItem('theme');
+
+  // Set initial theme
+  if (currentTheme === 'light' || (!currentTheme && !prefersDarkScheme.matches)) {
+    document.documentElement.setAttribute('data-theme', 'light');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+
+  // Toggle theme
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
 
   // Particle.js configuration
   particlesJS("particles-js", {
