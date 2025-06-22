@@ -764,25 +764,24 @@
 
     .back-to-top {
       position: fixed;
-      bottom: 20px;
-      left: 20px;           /* Moved to left */
-      right: auto;          /* Clear right alignment */
+      bottom: 90px; /* Places it ABOVE the chatbot */
+      right: 20px;
       width: 50px;
       height: 50px;
-      background: var(--accent);
-      color: var(--bg-primary);
+      background: var(--accent, #007bff);
+      color: var(--bg-primary, #fff);
+      border: none;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
       cursor: pointer;
-      transition: var(--transition);
+      transition: 0.3s ease;
       opacity: 0;
       visibility: hidden;
-      z-index: 1000;
+      z-index: 1000; /* Higher than chatbot */
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-      border: none;
     }
 
 
@@ -1587,34 +1586,33 @@
 </script>
 <script src="https://www.chatbase.co/embed.min.js"></script>
 
-<!-- Fix chatbot position so it's below the back-to-top button -->
+<!-- Back to Top Button -->
+<a href="#" class="back-to-top" id="backToTop">↑</a>
+
 <script>
-  const adjustChatbotPosition = () => {
-    const wrapper = document.querySelector('div[style*="z-index"][style*="position: fixed"] iframe[src*="chatbase"]');
-    if (wrapper) {
-      const parent = wrapper.parentElement;
-      if (parent) {
-        parent.style.position = 'fixed';
-        parent.style.bottom = '80px'; // Push chatbot up
-        parent.style.right = '20px';
-        parent.style.zIndex = '9999'; // Below the back-to-top
-      }
+  function adjustChatbotPosition() {
+    const iframe = document.querySelector('iframe[src*="chatbase.co"]');
+    if (iframe && iframe.parentElement) {
+      const parent = iframe.parentElement;
+      parent.style.position = 'fixed';
+      parent.style.bottom = '80px';  // Push it up
+      parent.style.right = '20px';
+      parent.style.zIndex = '9999';
+      iframe.style.borderRadius = '12px';
+      iframe.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+      iframe.style.width = '350px';
+      iframe.style.height = '500px';
     }
-  };
+  }
 
-  const observer = new MutationObserver(() => {
-    adjustChatbotPosition();
-  });
+  const observer = new MutationObserver(adjustChatbotPosition);
+  observer.observe(document.body, { childList: true, subtree: true });
 
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-
-  // Fallback in case it loads late
-  window.addEventListener("load", () => {
+  window.addEventListener('load', () => {
     setTimeout(adjustChatbotPosition, 2000);
   });
+
+
 </script>
 </body>
 </html>
