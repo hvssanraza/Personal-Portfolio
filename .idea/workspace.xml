@@ -36,7 +36,7 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript Debug.404.html.executor": "Run",
-    "JavaScript Debug.index.html.executor": "Run",
+    "JavaScript Debug.index.html.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "disable.download.node.interpreter.editor.notification": "true",
@@ -81,7 +81,7 @@
       <workItem from="1750505680652" duration="1740000" />
       <workItem from="1750519530493" duration="9848000" />
       <workItem from="1750583772858" duration="12000" />
-      <workItem from="1750586089072" duration="8226000" />
+      <workItem from="1750586089072" duration="10427000" />
     </task>
     <servers />
   </component>
