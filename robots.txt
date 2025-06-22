@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /Assets/  # Prevent indexing of asset folders (optional)
+Sitemap: https://hassanraza.tech/sitemap.xml
