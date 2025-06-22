@@ -204,6 +204,7 @@
       width: 100%;
     }
 
+
     .theme-toggle {
       background: none;
       border: none;
@@ -353,7 +354,15 @@
       transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
     }
-
+    .qr-code {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .qr-code img {
+      border: 1px solid var(--border);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
     .section {
       padding: 6rem 5%;
       position: relative;
@@ -734,6 +743,19 @@
       box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
     }
 
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      #chatbase-chatbot-container {
+        bottom: 80px;
+        left: 10px;
+        width: 90%;
+        max-width: 300px;
+        height: 450px;
+      }
+    }
+
+
+
     footer p {
       color: var(--text-secondary);
       font-size: 0.9rem;
@@ -742,8 +764,9 @@
 
     .back-to-top {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
+      bottom: 20px;
+      left: 20px;           /* Moved to left */
+      right: auto;          /* Clear right alignment */
       width: 50px;
       height: 50px;
       background: var(--accent);
@@ -761,6 +784,7 @@
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
       border: none;
     }
+
 
     .back-to-top:focus-visible {
       outline: 2px solid var(--text-primary);
@@ -1040,6 +1064,7 @@
   </style>
 </head>
 <body>
+
 <div id="particles-js"></div>
 <a href="#" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
 
@@ -1249,6 +1274,7 @@
         <h3>Instagram</h3>
         <a href="https://instagram.com/hassanrazamusic" target="_blank" rel="noopener noreferrer">@hassanrazamusic</a>
       </div>
+
     </div>
 
     <div class="contact-form hidden">
@@ -1294,6 +1320,7 @@
 </footer>
 
 <script>
+
   // Dynamic current year in footer
   document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -1547,6 +1574,47 @@
   // Preload hero image
   const heroImage = new Image();
   heroImage.src = 'Assets/07D601E6-7941-4E3F-8E30-4431B53C08E3.JPG';
+</script>
+<!-- Chatbase Embed -->
+<a href="#" class="back-to-top">↑ Top</a>
+
+<!-- Chatbase Embed -->
+<script>
+  window.embeddedChatbotConfig = {
+    chatbotId: "U7Qt2pICaWBOo3iEAxj6Z",
+    domain: "www.chatbase.co"
+  };
+</script>
+<script src="https://www.chatbase.co/embed.min.js"></script>
+
+<!-- Fix chatbot position so it's below the back-to-top button -->
+<script>
+  const adjustChatbotPosition = () => {
+    const wrapper = document.querySelector('div[style*="z-index"][style*="position: fixed"] iframe[src*="chatbase"]');
+    if (wrapper) {
+      const parent = wrapper.parentElement;
+      if (parent) {
+        parent.style.position = 'fixed';
+        parent.style.bottom = '80px'; // Push chatbot up
+        parent.style.right = '20px';
+        parent.style.zIndex = '9999'; // Below the back-to-top
+      }
+    }
+  };
+
+  const observer = new MutationObserver(() => {
+    adjustChatbotPosition();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
+  // Fallback in case it loads late
+  window.addEventListener("load", () => {
+    setTimeout(adjustChatbotPosition, 2000);
+  });
 </script>
 </body>
 </html>
