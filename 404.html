@@ -7,14 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="Assets/Black%20White%20Minimal%20Simple%20Modern%20Creative%20Studio%20Ego%20Logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         :root {
             --bg-primary: #0A0A0E;
             --bg-secondary: #1A1A22;
+            --bg-tertiary: #2A2A33;
             --text-primary: #E0E0E6;
             --text-secondary: #A0A0A8;
+            --text-accent: #6C6C7D;
             --accent: #00BFFF;
             --accent-dark: #009ACD;
+            --accent-transparent: rgba(0, 191, 255, 0.1);
             --border: #3A3A45;
             --shadow: 0 10px 20px rgba(0,0,0,0.3);
             --transition: all 0.4s ease;
@@ -23,10 +27,13 @@
         [data-theme="light"] {
             --bg-primary: #F5F5FA;
             --bg-secondary: #FFFFFF;
+            --bg-tertiary: #EAEAF0;
             --text-primary: #1A1A22;
             --text-secondary: #4A4A55;
+            --text-accent: #6C6C7D;
             --accent: #0066CC;
             --accent-dark: #004D99;
+            --accent-transparent: rgba(0, 102, 204, 0.1);
             --border: #D0D0D8;
             --shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
@@ -38,6 +45,10 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg-primary);
             color: var(--text-primary);
@@ -45,13 +56,35 @@
             display: flex;
             flex-direction: column;
             transition: var(--transition);
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            opacity: 0.6;
+            background-color: var(--bg-primary);
         }
 
         header {
             padding: 1.5rem 5%;
             background-color: rgba(10, 10, 14, 0.9);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid var(--border);
+            z-index: 1000;
             transition: var(--transition);
         }
 
@@ -66,10 +99,69 @@
             color: var(--text-primary);
             text-decoration: none;
             letter-spacing: 1px;
+            transition: var(--transition);
         }
 
         .header-logo:hover {
             color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--text-primary);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            outline: none;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+            background-color: var(--accent-transparent);
         }
 
         .container {
@@ -80,6 +172,8 @@
             align-items: center;
             text-align: center;
             padding: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .error-code {
@@ -117,6 +211,8 @@
             font-weight: 600;
             transition: var(--transition);
             box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
@@ -134,10 +230,42 @@
             color: var(--accent);
             text-decoration: none;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .links a:hover {
             color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        .search-suggestion {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .search-suggestion ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .search-suggestion li {
+            margin-bottom: 0.75rem;
+        }
+
+        .search-suggestion a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .search-suggestion a:hover {
             text-decoration: underline;
         }
 
@@ -147,11 +275,56 @@
             background: var(--bg-secondary);
             border-top: 1px solid var(--border);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--accent-transparent);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--bg-primary);
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
+        }
+
+        [data-theme="light"] .social-links a:hover {
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
+
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
             .error-code {
                 font-size: 6rem;
             }
@@ -159,12 +332,26 @@
             h1 {
                 font-size: 2rem;
             }
+
+            .container {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+<div id="particles-js"></div>
+
 <header>
-    <a href="/" class="header-logo">HASSAN RAZA</a>
+    <a href="https://hassanraza.tech/" class="header-logo">HASSAN RAZA</a>
+    <nav>
+        <a href="https://hassanraza.tech/#about">About</a>
+        <a href="https://hassanraza.tech/#projects">Projects</a>
+        <a href="https://hassanraza.tech/#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
 </header>
 
 <main class="container">
@@ -175,13 +362,31 @@
         <i class="fas fa-home"></i> Return Home
     </a>
 
-    <div class="links">
-        <a href="https://hassanraza.tech/#projects"><i class="fas fa-code"></i> Projects</a>
-        <a href="https://hassanraza.tech/#contact"><i class="fas fa-envelope"></i> Contact</a>
+    <div class="search-suggestion">
+        <p>Were you looking for one of these?</p>
+        <ul>
+            <li><a href="https://hassanraza.tech/#projects"><i class="fas fa-code"></i> My Projects</a></li>
+            <li><a href="https://hassanraza.tech/#about"><i class="fas fa-user"></i> About Me</a></li>
+            <li><a href="https://hassanraza.tech/#contact"><i class="fas fa-envelope"></i> Contact Page</a></li>
+        </ul>
     </div>
 </main>
 
 <footer>
+    <div class="social-links">
+        <a href="https://github.com/hvssanraza" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/codehassanraza" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://instagram.com/hassanrazamusic" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:codehassanraza@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
     <p>&copy; <span id="currentYear"></span> Hassan Raza. All rights reserved.</p>
 </footer>
 
@@ -189,10 +394,107 @@
     // Set current year
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // Theme detection
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+
     document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.innerHTML = currentTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    });
+
+    // Initialize particles.js
+    particlesJS("particles-js", {
+        "particles": {
+            "number": {
+                "value": 80,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": { "value": "#00BFFF" },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                }
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 2,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#00BFFF",
+                "opacity": 0.2,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 2,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": true,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "repulse": {
+                    "distance": 100,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                }
+            }
+        },
+        "retina_detect": true
+    });
 </script>
 </body>
 </html>
