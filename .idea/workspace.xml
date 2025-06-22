@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc7cf11c-fb22-4564-9894-5cef8ad17360" name="Changes" comment="" />
+    <list default="true" id="cc7cf11c-fb22-4564-9894-5cef8ad17360" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +36,7 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript Debug.404.html.executor": "Run",
-    "JavaScript Debug.index.html.executor": "Debug",
+    "JavaScript Debug.index.html.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "disable.download.node.interpreter.editor.notification": "true",
@@ -78,7 +81,7 @@
       <workItem from="1750505680652" duration="1740000" />
       <workItem from="1750519530493" duration="9848000" />
       <workItem from="1750583772858" duration="12000" />
-      <workItem from="1750586089072" duration="10841000" />
+      <workItem from="1750586089072" duration="12381000" />
     </task>
     <servers />
   </component>
