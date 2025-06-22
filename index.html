@@ -1337,7 +1337,22 @@
 
   footer a:hover {
     color: #ccd6f6;
-  }</style>
+  }
+    @media (max-width: 480px) {
+      .footer-name {
+        font-size: 18px;
+      }
+
+      .social-links i {
+        font-size: 18px;
+      }
+
+      .legal-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
   <p>&copy; <span id="currentYear"></span> Hassan Raza. All rights reserved.</p>
 </footer>
 
