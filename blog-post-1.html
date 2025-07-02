@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5 Key Concepts in Machine Learning for Beginners - Hassan Raza's Blog</title>
+    <meta name="description" content="A beginner-friendly guide to the top 5 foundational concepts in Machine Learning, written by AI developer Hassan Raza.">
+    <meta name="author" content="Hassan Raza">
+    <link rel="canonical" href="https://hassanraza.tech/blog-post-1.html" />
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hassanraza.tech/blog-post-1.html">
+    <meta property="og:title" content="5 Key Concepts in Machine Learning for Beginners - Hassan Raza's Blog">
+    <meta property="og:description" content="A beginner-friendly guide to the top 5 foundational concepts in Machine Learning.">
+    <meta property="og:image" content="https://placehold.co/1200x630/0A0A0E/00BFFF?text=ML+Concepts">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="5 Key Concepts in Machine Learning for Beginners - Hassan Raza's Blog">
+    <meta name="twitter:description" content="A beginner-friendly guide to the top 5 foundational concepts in Machine Learning.">
+    <meta name="twitter:image" content="https://placehold.co/1200x630/0A0A0E/00BFFF?text=ML+Concepts">
+
+    <link rel="icon" type="image/png" href="Assets/Black%20White%20Minimal%20Simple%20Modern%20Creative%20Studio%20Ego%20Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        :root{--bg-primary:#0A0A0E;--bg-secondary:#1A1A22;--bg-tertiary:#2A2A33;--text-primary:#E0E0E6;--text-secondary:#A0A0A8;--accent:#00BFFF;--accent-dark:#009ACD;--accent-transparent:rgba(0, 191, 255, 0.1);--border:#3A3A45;--shadow:0 10px 20px rgba(0,0,0,0.3);--transition:all 0.4s ease;}[data-theme="light"]{--bg-primary:#F5F5FA;--bg-secondary:#FFFFFF;--bg-tertiary:#EAEAF0;--text-primary:#1A1A22;--text-secondary:#4A4A55;--accent:#0066CC;--accent-dark:#004D99;--accent-transparent:rgba(0, 102, 204, 0.1);--border:#D0D0D8;--shadow:0 10px 20px rgba(0,0,0,0.1);}*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans', sans-serif;}html{scroll-behavior:smooth;}body{background-color:var(--bg-primary);color:var(--text-primary);line-height:1.7;position:relative;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}#particles-js{position:fixed;width:100%;height:100%;z-index:-1;top:0;left:0;opacity:0.6;background-color:var(--bg-primary);}main{flex-grow:1;padding-top:100px;}header{position:fixed;top:0;width:100%;padding:1.5rem 5%;background-color:rgba(10, 10, 14, 0.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);z-index:1000;transition:var(--transition);}[data-theme="light"] header{background-color:rgba(245, 245, 250, 0.9);}.header-logo{font-family:'Syncopate', sans-serif;font-size:1.75rem;font-weight:700;color:var(--text-primary);text-decoration:none;letter-spacing:1px;}.header-logo:hover{color:var(--accent);}nav{display:flex;gap:2rem;align-items:center;}nav a{color:var(--text-secondary);text-decoration:none;font-weight:500;font-size:1rem;position:relative;transition:var(--transition);padding:0.5rem 0;}nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:var(--transition);}nav a:hover,nav a.active{color:var(--text-primary);}nav a:hover::after,nav a.active::after{width:100%;}.theme-toggle{background:none;border:none;color:var(--text-secondary);font-size:1.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;outline:none;}
+        .blog-post{max-width:800px;margin:0 auto;padding:6rem 5%;}.blog-post h1{font-family:'Syncopate', sans-serif;font-size:clamp(2.2rem, 6vw, 3.5rem);line-height:1.2;margin-bottom:1rem;color:var(--accent);}.post-meta{color:var(--text-accent);margin-bottom:2rem;}.post-content{font-size:1.1rem;line-height:1.8;}.post-content h2{font-family:'Syncopate', sans-serif;font-size:1.8rem;margin-top:2.5rem;margin-bottom:1rem;color:var(--accent);}.post-content p{margin-bottom:1.5rem;}.post-content ul{list-style-position:inside;margin-bottom:1.5rem;padding-left:1rem;}.post-content li{margin-bottom:0.75rem;}
+        .post-content a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);transition:var(--transition);}.post-content a:hover{color:var(--accent-dark);border-bottom-style:solid;}
+        .post-content code{background:var(--bg-secondary);padding:0.2rem 0.4rem;border-radius:0.3rem;font-family:monospace;}
+        footer{padding:3rem 5%;text-align:center;background:var(--bg-secondary);margin-top:auto;border-top:1px solid var(--border);position:relative;z-index:2;}.footer-name{font-family:'Syncopate', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;color:var(--text-primary);}.social-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;}.social-links a{color:var(--accent);font-size:1.5rem;transition:var(--transition);width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:50%;background-color:var(--accent-transparent);text-decoration:none;}.social-links a:hover{color:var(--bg-primary);background-color:var(--accent);transform:translateY(-3px);box-shadow:0 5px 15px rgba(0, 191, 255, 0.3);}.legal-links a{color:var(--accent);text-decoration:none;margin:0 8px;font-size:14px;transition:color 0.3s ease;}.legal-links a:hover{color:#ccd6f6;}footer p{color:var(--text-secondary);font-size:0.9rem;margin-top:1rem;}
+        @media (max-width: 767px){header{padding:1rem;flex-direction:column;gap:1rem;}nav{width:100%;justify-content:center;flex-wrap:wrap;gap:1rem 1.5rem;}main{padding-top:140px;}.blog-post{padding:4rem 1.5rem;}}
+        @media (max-width: 480px){.social-links{gap:1rem;}.social-links a{width:45px;height:45px;font-size:1.3rem;}.footer-name{font-size:1.2rem;}}
+    </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<header>
+    <a href="index.html" class="header-logo">HASSAN RAZA</a>
+    <nav>
+        <a href="index.html#about" aria-label="About Me">About</a>
+        <a href="education.html" aria-label="Education">Education</a>
+        <a href="projects.html" aria-label="My Projects">Projects</a>
+        <a href="skills.html" aria-label="My Skills">Skills</a>
+        <a href="blog.html" class="active" aria-label="My Blog">Blogs</a>
+        <a href="contact.html" aria-label="Contact Me">Contact</a>
+        <button class="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+    </nav>
+</header>
+
+<main>
+    <article class="blog-post">
+        <h1>5 Key Concepts in Machine Learning for Beginners</h1>
+        <p class="post-meta">Published on July 2, 2025 by Hassan Raza</p>
+        <div class="post-content">
+            <p>Diving into the world of Machine Learning (ML) can feel overwhelming. The field is vast, with complex algorithms and terminology. However, understanding a few foundational concepts can provide a solid base for your learning journey. Here are five key ideas every beginner should grasp.</p>
+
+            <h2>1. Supervised vs. Unsupervised Learning</h2>
+            <p>This is the most fundamental distinction in ML. In <strong>Supervised Learning</strong>, you train a model on labeled data, meaning each data point has a known outcome or "tag." The goal is to learn a mapping function that can predict the output for new, unlabeled data. Think of it as learning with a teacher. Examples include spam detection (labeled as "spam" or "not spam") and house price prediction (labeled with prices).</p>
+            <p>In <strong>Unsupervised Learning</strong>, the data is unlabeled. The algorithm tries to find patterns, structures, and relationships within the data on its own, without a "teacher." A common example is customer segmentation, where a business might group customers based on purchasing behavior without knowing the group definitions beforehand.</p>
+
+            <h2>2. The Model, Cost Function, and Optimizer</h2>
+            <p>These three components work together in most ML tasks. The <strong>Model</strong> is the mathematical representation of the system you are trying to build (e.g., a linear regression line). The <strong>Cost Function</strong> (or Loss Function) measures how wrong the model's predictions are compared to the actual outcomes. The goal is to minimize this function. The <strong>Optimizer</strong> is the algorithm used to adjust the model's internal parameters to minimize the cost function. A common optimizer is Gradient Descent.</p>
+
+            <h2>3. Training, Validation, and Test Sets</h2>
+            <p>You never want to evaluate your model on the same data it was trained on. To do this properly, you split your dataset into three parts:</p>
+            <ul>
+                <li><strong>Training Set:</strong> The largest part, used to train the model.</li>
+                <li><strong>Validation Set:</strong> Used to tune the model's hyperparameters and prevent overfitting.</li>
+                <li><strong>Test Set:</strong> Used only once at the very end to provide an unbiased evaluation of the final model's performance.</li>
+            </ul>
+
+            <h2>4. Overfitting and Underfitting</h2>
+            <p><strong>Overfitting</strong> occurs when a model learns the training data too well, including its noise and random fluctuations. As a result, it performs poorly on new, unseen data. It has high variance. <strong>Underfitting</strong> occurs when a model is too simple to capture the underlying patterns in the data. It performs poorly on both the training data and new data. It has high bias. The goal is to find a balance between the two.</p>
+
+            <h2>5. Feature Engineering</h2>
+            <p>The performance of an ML model is heavily dependent on the quality of the data it's trained on. <strong>Feature Engineering</strong> is the process of using domain knowledge to select, transform, and create the most relevant variables (features) from raw data to improve model performance. This can be more important than the choice of algorithm itself and is often where data scientists spend most of their time.</p>
+            <p>By understanding these five concepts, you'll be well-equipped to tackle more advanced topics in your AI and Machine Learning journey. For more information, check out this <a href="#">example link</a>.</p>
+        </div>
+    </article>
+</main>
+
+<footer>
+    <div class="footer-name">Hassan Raza</div>
+    <div class="social-links">
+        <a href="https://github.com/hvssanraza" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/codehassanraza/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://instagram.com/hassanrazamusic" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:codehassanraza@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div class="legal-links" style="margin-top: 16px;">
+        <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a> | <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+    <p>&copy; <span id="currentYear"></span> Hassan Raza. All rights reserved.</p>
+</footer>
+
+<script>
+    particlesJS("particles-js",{particles:{number:{value:80,density:{enable:!0,value_area:800}},color:{value:"#00BFFF"},shape:{type:"circle"},opacity:{value:.5,random:!0,anim:{enable:!0,speed:1,opacity_min:.1,sync:!1}},size:{value:3,random:!0,anim:{enable:!0,speed:2,size_min:.1,sync:!1}},line_linked:{enable:!0,distance:150,color:"#00BFFF",opacity:.2,width:1},move:{enable:!0,speed:2,direction:"none",random:!0,straight:!1,out_mode:"out",attract:{enable:!0,rotateX:600,rotateY:1200}}},interactivity:{detect_on:"canvas",events:{onhover:{enable:!0,mode:"repulse"},onclick:{enable:!0,mode:"push"},resize:!0},modes:{repulse:{distance:100,duration:.4},push:{particles_nb:4}}},retina_detect:!0});
+    document.getElementById("currentYear").textContent=new Date().getFullYear();
+    const themeToggle=document.querySelector(".theme-toggle"),prefersDarkScheme=window.matchMedia("(prefers-color-scheme: dark)"),currentTheme=localStorage.getItem("theme");
+    "light"===currentTheme||!currentTheme&&!prefersDarkScheme.matches?(document.documentElement.setAttribute("data-theme","light"),themeToggle.innerHTML='<i class="fas fa-sun"></i>'):(document.documentElement.setAttribute("data-theme","dark"),themeToggle.innerHTML='<i class="fas fa-moon"></i>');
+    themeToggle.addEventListener("click",()=>{const e="dark"===document.documentElement.getAttribute("data-theme")?"light":"dark";document.documentElement.setAttribute("data-theme",e),themeToggle.innerHTML="dark"===e?'<i class="fas fa-moon"></i>':'<i class="fas fa-sun"></i>',localStorage.setItem("theme",e)});
+</script>
+</body>
+</html>
