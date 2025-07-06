@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skills | Hassan Raza</title>
-  <meta name="description" content="View the technical skills of Hassan Raza, including proficiency in Python, C++, AI/Machine Learning, PHP, HTML, CSS, JavaScript, and UI/UX Design.">
-  <meta name="keywords" content="Hassan Raza Skills, Technical Skills, Python, PHP, C++, AI, Machine Learning, Web Development, UI/UX Design, MySQL, GitHub">
+  <meta name="description" content="View the technical skills of Hassan Raza, including proficiency in Python, C++, AI/Machine Learning, PHP, HTML, CSS, JavaScript, Flutter, Android Development, and UI/UX Design.">
+  <meta name="keywords" content="Hassan Raza Skills, Technical Skills, Python, PHP, C++, AI, Machine Learning, Web Development, Flutter, Android Development, UI/UX Design, MySQL, GitHub">
   <meta name="author" content="Hassan Raza">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://hassanraza.tech/skills.html" />
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hassanraza.tech/skills.html">
   <meta property="og:title" content="Skills | Hassan Raza">
-  <meta property="og:description" content="Proficiency in Python, PHP, C++, AI/Machine Learning, Web Development, and UI/UX Design.">
+  <meta property="og:description" content="Proficiency in Python, PHP, C++, AI/Machine Learning, Web Development, Flutter, Android Development, and UI/UX Design.">
   <meta property="og:image" content="https://hassanraza.tech/Assets/07D601E6-7941-4E3F-8E30-4431B53C08E3.JPG">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://hassanraza.tech/skills.html">
   <meta name="twitter:title" content="Skills | Hassan Raza">
-  <meta name="twitter:description" content="Proficiency in Python, PHP, C++, AI/Machine Learning, Web Development, and UI/UX Design.">
+  <meta name="twitter:description" content="Proficiency in Python, PHP, C++, AI/Machine Learning, Web Development, Flutter, Android Development, and UI/UX Design.">
   <meta name="twitter:image" content="https://hassanraza.tech/Assets/07D601E6-7941-4E3F-8E30-4431B53C08E3.JPG">
   <link rel="icon" type="image/png" href="Assets/Black%20White%20Minimal%20Simple%20Modern%20Creative%20Studio%20Ego%20Logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
@@ -204,6 +204,17 @@
     .skill-icon {
       font-size: 2.5rem;
       color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+    /* Fixed Flutter icon styling */
+    .skill-icon svg.flutter-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      fill: var(--accent);
     }
     .skill-item h3 {
       font-size: 1.1rem;
@@ -408,7 +419,20 @@
         <div class="skill-icon"><i class="fab fa-js" aria-hidden="true"></i></div>
         <h3>JavaScript</h3>
       </div>
-      <!-- PHP Skill - Matched with others -->
+      <div class="skill-item hidden">
+        <div class="skill-icon"><i class="fab fa-android" aria-hidden="true"></i></div>
+        <h3>Android Development</h3>
+      </div>
+      <div class="skill-item hidden">
+        <div class="skill-icon">
+          <!-- Fixed Flutter SVG with proper styling -->
+          <svg class="flutter-icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>Flutter</title>
+            <path d="M14.314 0L2.3 12 6 15.7 21.684 0h-7.37zM6 8.3L9.7 12 6 15.7l-3.7-3.7L6 8.3zm8.314 7.4L18 12l-3.686-3.7H6.94l7.374 7.4z"/>
+          </svg>
+        </div>
+        <h3>Flutter</h3>
+      </div>
       <div class="skill-item hidden">
         <div class="skill-icon"><i class="fab fa-php" aria-hidden="true"></i></div>
         <h3>PHP</h3>
