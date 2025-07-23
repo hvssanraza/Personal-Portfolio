@@ -326,13 +326,21 @@
       box-shadow: 0 0 50px rgba(0, 102, 204, 0.5);
     }
 
+    /* New button container and styles */
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap; /* This makes it responsive */
+    }
+
     .cta-button {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       padding: 0.8rem 2rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: var(--bg-primary);
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
@@ -343,15 +351,35 @@
       font-size: 1rem;
     }
 
+    /* Primary button style (Get in Touch) */
+    .cta-button.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: var(--bg-primary);
+    }
+
+    /* Secondary button style (Download Resume) */
+    .cta-button.secondary {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      box-shadow: none;
+    }
+
+    .cta-button.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+    }
+
+    .cta-button.secondary:hover {
+      background: var(--accent-transparent);
+      transform: translateY(-3px);
+    }
+
     .cta-button:focus-visible {
       outline: 2px solid var(--text-primary);
       outline-offset: 2px;
     }
 
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
-    }
     .qr-code {
       text-align: center;
       margin-top: 2rem;
@@ -478,6 +506,19 @@
         width: 90%;
         max-width: 300px;
         height: 450px;
+      }
+
+      /* Stack buttons vertically on mobile */
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .cta-button {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        justify-content: center;
       }
     }
 
@@ -660,8 +701,6 @@
     .card h3{margin-bottom:1rem;color:var(--accent);font-size:1.5rem;font-weight:600;}.card p{margin-bottom:1.5rem;color:var(--text-secondary);flex-grow:1;line-height:1.7;}
     .card-meta{font-size:0.9rem;color:var(--text-accent);margin-bottom:1rem;}
     .card-link{display:inline-flex;align-items:center;gap:0.5rem;color:var(--accent);text-decoration:none;font-weight:600;margin-top:auto;}.card-link:hover{color:var(--accent-dark);text-decoration:underline;}
-    .cta-button{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 2rem;background:linear-gradient(135deg, var(--accent), var(--accent-dark));color:var(--bg-primary);border-radius:50px;text-decoration:none;font-weight:600;transition:var(--transition);box-shadow:0 4px 15px rgba(0, 123, 255, 0.3);border:none;cursor:pointer;font-size:1rem;}
-    .cta-button:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0, 123, 255, 0.4);}
   </style>
 </head>
 <body>
@@ -690,8 +729,12 @@
     <div class="hero-content">
       <h1>Hello, I'm Hassan Raza</h1>
       <p>A tech enthusiast and aspiring AI engineer with a unique blend of creative and technical skills.</p>
-      <a href="Assets/Hassan Raza Resume.pdf" class="cta-button" download>Download Resume <i class="fas fa-download"></i></a>
-      <a href="contact.html" class="cta-button">Get In Touch <i class="fas fa-arrow-right"></i></a>
+
+      <!-- Updated button container with new styles -->
+      <div class="hero-buttons">
+        <a href="contact.html" class="cta-button primary">Get In Touch <i class="fas fa-arrow-right"></i></a>
+        <a href="Assets/Hassan Raza Resume.pdf" class="cta-button secondary" download>Download Resume <i class="fas fa-download"></i></a>
+      </div>
     </div>
   </section>
 
@@ -718,16 +761,16 @@
     <div class="blog-grid">
       <a href="blog-post-1.html" class="card hidden" aria-label="Read more about 5 Key Concepts in Machine Learning for Beginners">
         <div class="card-image" style="background-image: url('Assets/blog1.png');"></div>        <div class="card-content">
-          <p class="card-meta">July 2, 2025</p>
-          <h3>5 Key Concepts in Machine Learning for Beginners</h3>
-          <p>Dive into the foundational concepts of Machine Learning, from supervised vs. unsupervised learning to the importance of data preprocessing...</p>
-          <span class="card-link">Read More <i class="fas fa-arrow-right"></i></span>
-        </div>
+        <p class="card-meta">July 2, 2025</p>
+        <h3>5 Key Concepts in Machine Learning for Beginners</h3>
+        <p>Dive into the foundational concepts of Machine Learning, from supervised vs. unsupervised learning to the importance of data preprocessing...</p>
+        <span class="card-link">Read More <i class="fas fa-arrow-right"></i></span>
+      </div>
       </a>
 
     </div>
     <div style="text-align: center; margin-top: 3rem;">
-      <a href="blog.html" class="cta-button">View All Posts</a>
+      <a href="blog.html" class="cta-button primary">View All Posts</a>
     </div>
   </section>
 
