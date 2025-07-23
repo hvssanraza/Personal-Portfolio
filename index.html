@@ -302,6 +302,7 @@
       animation: shine 6s infinite linear;
     }
 
+
     [data-theme="light"] .hero-image::before {
       background: linear-gradient(
               to bottom right,
@@ -630,6 +631,14 @@
         box-shadow: none !important;
         border: 3px solid #0066CC !important;
       }
+      .hero-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        flex-wrap: wrap; /* This makes it responsive */
+      }
 
       a::after {
         content: " (" attr(href) ")";
@@ -681,6 +690,7 @@
     <div class="hero-content">
       <h1>Hello, I'm Hassan Raza</h1>
       <p>A tech enthusiast and aspiring AI engineer with a unique blend of creative and technical skills.</p>
+      <a href="Assets/Hassan Raza Resume.pdf" class="cta-button" download>Download Resume <i class="fas fa-download"></i></a>
       <a href="contact.html" class="cta-button">Get In Touch <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
