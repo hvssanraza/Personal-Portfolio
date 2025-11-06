@@ -26,8 +26,119 @@
         .blog-post{max-width:800px;margin:0 auto;padding:6rem 5%;}.blog-post h1{font-family:'Syncopate', sans-serif;font-size:clamp(2.2rem, 6vw, 3.5rem);line-height:1.2;margin-bottom:1rem;color:var(--accent);}.post-meta{color:var(--text-accent);margin-bottom:2rem;}.post-content{font-size:1.1rem;line-height:1.8;}.post-content h2{font-family:'Syncopate', sans-serif;font-size:1.8rem;margin-top:2.5rem;margin-bottom:1rem;color:var(--accent);}.post-content p{margin-bottom:1.5rem;}.post-content ul{list-style-position:inside;margin-bottom:1.5rem;padding-left:1rem;}.post-content li{margin-bottom:0.75rem;}
         .post-content a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);transition:var(--transition);}.post-content a:hover{color:var(--accent-dark);border-bottom-style:solid;}
         .post-content code{background:var(--bg-secondary);padding:0.2rem 0.4rem;border-radius:0.3rem;font-family:monospace;}
+        
+        /* Feedback Form Styles */
+        .feedback-section {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            padding: 0 5%;
+        }
+        .feedback-heading {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-align: center;
+        }
+        .contact-form {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-transparent);
+        }
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .form-submit {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+        }
+        .form-feedback {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .form-feedback.success {
+            background-color: rgba(40, 167, 69, 0.1);
+            border: 1px solid rgba(40, 167, 69, 0.3);
+            color: #28a745;
+        }
+        .form-feedback.error {
+            background-color: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            color: #dc3545;
+        }
+        .form-feedback i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .form-feedback h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        .form-feedback p {
+            margin-bottom: 0;
+            color: inherit;
+        }
+        .feedback-section {
+    max-width: 800px;
+    margin: 4rem auto 6rem; /* Increased bottom margin from 0 to 6rem */
+    padding: 0 5%;
+}
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         footer{padding:3rem 5%;text-align:center;background:var(--bg-secondary);margin-top:auto;border-top:1px solid var(--border);position:relative;z-index:2;}.footer-name{font-family:'Syncopate', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;color:var(--text-primary);}.social-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;}.social-links a{color:var(--accent);font-size:1.5rem;transition:var(--transition);width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:50%;background-color:var(--accent-transparent);text-decoration:none;}.social-links a:hover{color:var(--bg-primary);background-color:var(--accent);transform:translateY(-3px);box-shadow:0 5px 15px rgba(0, 191, 255, 0.3);}.legal-links a{color:var(--accent);text-decoration:none;margin:0 8px;font-size:14px;transition:color 0.3s ease;}.legal-links a:hover{color:#ccd6f6;}footer p{color:var(--text-secondary);font-size:0.9rem;margin-top:1rem;}
-        @media (max-width: 767px){header{padding:1rem;flex-direction:column;gap:1rem;}nav{width:100%;justify-content:center;flex-wrap:wrap;gap:1rem 1.5rem;}main{padding-top:140px;}.blog-post{padding:4rem 1.5rem;}}
+        @media (max-width: 767px){header{padding:1rem;flex-direction:column;gap:1rem;}nav{width:100%;justify-content:center;flex-wrap:wrap;gap:1rem 1.5rem;}main{padding-top:140px;}.blog-post{padding:4rem 1.5rem;}.feedback-section{padding:0 1.5rem;}.contact-form{padding:2rem;}}
         @media (max-width: 480px){.social-links{gap:1rem;}.social-links a{width:45px;height:45px;font-size:1.3rem;}.footer-name{font-size:1.2rem;}}
     </style>
 </head>
@@ -78,6 +189,34 @@
             <p>By understanding these five concepts, you'll be well-equipped to tackle more advanced topics in your AI and Machine Learning journey.</p>
         </div>
     </article>
+
+    <!-- Feedback Section -->
+    <section class="feedback-section">
+        <h2 class="feedback-heading">Give Your Feedback About The Blog</h2>
+        <div class="contact-form hidden">
+            <form id="blogFeedbackForm" action="https://formspree.io/f/mzzgarzr" method="POST">
+                <input type="hidden" name="_subject" value="Blog Feedback - 5 Key ML Concepts">
+                <input type="hidden" name="blog_post" value="5-key-concepts-machine-learning">
+                
+                <div class="form-group">
+                    <label for="blogName" class="form-label">Your Name</label>
+                    <input type="text" id="blogName" name="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="blogEmail" class="form-label">Your Email</label>
+                    <input type="email" id="blogEmail" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="blogMessage" class="form-label">Your Feedback</label>
+                    <textarea id="blogMessage" name="message" class="form-control" placeholder="What did you think about this blog post? Any suggestions or questions?" required></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">Send Feedback <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
 </main>
 
 <footer>
@@ -97,9 +236,62 @@
 <script>
     particlesJS("particles-js",{particles:{number:{value:80,density:{enable:!0,value_area:800}},color:{value:"#00BFFF"},shape:{type:"circle"},opacity:{value:.5,random:!0,anim:{enable:!0,speed:1,opacity_min:.1,sync:!1}},size:{value:3,random:!0,anim:{enable:!0,speed:2,size_min:.1,sync:!1}},line_linked:{enable:!0,distance:150,color:"#00BFFF",opacity:.2,width:1},move:{enable:!0,speed:2,direction:"none",random:!0,straight:!1,out_mode:"out",attract:{enable:!0,rotateX:600,rotateY:1200}}},interactivity:{detect_on:"canvas",events:{onhover:{enable:!0,mode:"repulse"},onclick:{enable:!0,mode:"push"},resize:!0},modes:{repulse:{distance:100,duration:.4},push:{particles_nb:4}}},retina_detect:!0});
     document.getElementById("currentYear").textContent=new Date().getFullYear();
+    
+    // Theme toggle functionality
     const themeToggle=document.querySelector(".theme-toggle"),prefersDarkScheme=window.matchMedia("(prefers-color-scheme: dark)"),currentTheme=localStorage.getItem("theme");
     "light"===currentTheme||!currentTheme&&!prefersDarkScheme.matches?(document.documentElement.setAttribute("data-theme","light"),themeToggle.innerHTML='<i class="fas fa-sun"></i>'):(document.documentElement.setAttribute("data-theme","dark"),themeToggle.innerHTML='<i class="fas fa-moon"></i>');
     themeToggle.addEventListener("click",()=>{const e="dark"===document.documentElement.getAttribute("data-theme")?"light":"dark";document.documentElement.setAttribute("data-theme",e),themeToggle.innerHTML="dark"===e?'<i class="fas fa-moon"></i>':'<i class="fas fa-sun"></i>',localStorage.setItem("theme",e)});
+    
+    // JavaScript for form submission and animations
+    const blogForm = document.getElementById('blogFeedbackForm');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+    }, {threshold: .1});
+
+    document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+
+    blogForm.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const submitButton = blogForm.querySelector('.form-submit');
+        const originalText = submitButton.innerHTML;
+        
+        // Show loading state
+        submitButton.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+        submitButton.disabled = true;
+        
+        const data = new FormData(blogForm);
+        
+        try {
+            const response = await fetch(blogForm.action, {
+                method: blogForm.method,
+                body: data,
+                headers: {'Accept': 'application/json'}
+            });
+            
+            if (response.ok) {
+                blogForm.innerHTML = `
+                    <div class="form-feedback success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Thank You!</h3>
+                        <p>Your feedback has been sent successfully. I appreciate your input!</p>
+                    </div>
+                `;
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            blogForm.innerHTML = `
+                <div class="form-feedback error">
+                    <i class="fas fa-times-circle"></i>
+                    <h3>Oops!</h3>
+                    <p>There was a problem sending your feedback. Please try again later.</p>
+                    <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--accent); color: white; border: none; border-radius: 0.25rem; cursor: pointer;">Try Again</button>
+                </div>
+            `;
+        }
+    });
 </script>
 </body>
 </html>
