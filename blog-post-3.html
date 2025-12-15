@@ -71,11 +71,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Prism.js for code syntax highlighting -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
     <style>
         :root {
             --bg-primary: #0A0A0E;
@@ -89,9 +84,6 @@
             --border: #3A3A45;
             --shadow: 0 10px 20px rgba(0,0,0,0.3);
             --transition: all 0.4s ease;
-            --success: #28a745;
-            --warning: #ffc107;
-            --danger: #dc3545;
         }
         
         [data-theme="light"] {
@@ -147,7 +139,7 @@
             top: 0;
             width: 100%;
             padding: 1.5rem 5%;
-            background-color: rgba(10, 10, 14, 0.95);
+            background-color: rgba(10, 10, 14, 0.9);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
@@ -159,7 +151,7 @@
         }
         
         [data-theme="light"] header {
-            background-color: rgba(245, 245, 250, 0.95);
+            background-color: rgba(245, 245, 250, 0.9);
         }
         
         .header-logo {
@@ -225,12 +217,6 @@
             height: 36px;
             border-radius: 50%;
             outline: none;
-            transition: var(--transition);
-        }
-        
-        .theme-toggle:hover {
-            background: var(--accent-transparent);
-            color: var(--accent);
         }
         
         /* Main Content */
@@ -252,10 +238,6 @@
             line-height: 1.2;
             margin-bottom: 1rem;
             color: var(--accent);
-            background: linear-gradient(135deg, var(--accent), #7FFFD4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .post-meta {
@@ -334,72 +316,20 @@
             border-bottom-style: solid;
         }
         
-        /* Code Blocks */
-        .code-block {
+        .post-content code {
             background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            overflow-x: auto;
-            position: relative;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.3rem;
+            font-family: monospace;
         }
         
-        .code-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .language-label {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
-        
-        .copy-btn {
-            background: var(--accent-transparent);
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 0.3rem 0.8rem;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: var(--transition);
-        }
-        
-        .copy-btn:hover {
-            background: var(--accent);
-            color: var(--bg-primary);
-        }
-        
-        pre[class*="language-"] {
-            margin: 0;
-            padding: 0;
-            background: transparent !important;
-        }
-        
-        /* Info Boxes */
+        /* Info Box Styles */
         .info-box {
             background: var(--accent-transparent);
             border-left: 4px solid var(--accent);
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 0.5rem 0.5rem 0;
-        }
-        
-        .info-box.warning {
-            background: rgba(255, 193, 7, 0.1);
-            border-left-color: var(--warning);
-        }
-        
-        .info-box.success {
-            background: rgba(40, 167, 69, 0.1);
-            border-left-color: var(--success);
         }
         
         /* Gesture Icons */
@@ -472,11 +402,13 @@
             align-items: center;
             gap: 0.5rem;
             transition: var(--transition);
+            color: white !important; /* Fixed button text color */
+            border: none;
         }
         
         .btn-primary {
             background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: var(--bg-primary);
+            color: white !important;
         }
         
         .btn-secondary {
@@ -488,15 +420,15 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 191, 255, 0.3);
+            color: white !important;
         }
         
-        /* Feedback Form */
+        /* Feedback Form Styles */
         .feedback-section {
             max-width: 800px;
             margin: 4rem auto 6rem;
             padding: 0 5%;
         }
-        
         .feedback-heading {
             font-family: 'Syncopate', sans-serif;
             font-size: 2rem;
@@ -504,7 +436,6 @@
             color: var(--accent);
             text-align: center;
         }
-        
         .contact-form {
             background: var(--bg-secondary);
             padding: 2.5rem;
@@ -512,17 +443,14 @@
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
         }
-        
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
-        
         .form-control {
             width: 100%;
             padding: 0.9rem 1rem;
@@ -533,23 +461,20 @@
             font-size: 1rem;
             transition: var(--transition);
         }
-        
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px var(--accent-transparent);
         }
-        
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
         }
-        
         .form-submit {
             width: 100%;
             padding: 0.9rem;
             background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: var(--bg-primary);
+            color: white !important;
             border: none;
             border-radius: 0.5rem;
             font-weight: 600;
@@ -560,35 +485,38 @@
             justify-content: center;
             gap: 0.5rem;
         }
-        
         .form-submit:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
         }
-        
         .form-feedback {
             text-align: center;
             padding: 2rem;
             border-radius: 0.5rem;
             margin-bottom: 1rem;
         }
-        
         .form-feedback.success {
             background-color: rgba(40, 167, 69, 0.1);
             border: 1px solid rgba(40, 167, 69, 0.3);
-            color: var(--success);
+            color: #28a745;
         }
-        
         .form-feedback.error {
             background-color: rgba(220, 53, 69, 0.1);
             border: 1px solid rgba(220, 53, 69, 0.3);
-            color: var(--danger);
+            color: #dc3545;
         }
-        
         .form-feedback i {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             display: block;
+        }
+        .form-feedback h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        .form-feedback p {
+            margin-bottom: 0;
+            color: inherit;
         }
         
         .hidden {
@@ -667,43 +595,6 @@
             margin-top: 1rem;
         }
         
-        /* Breadcrumbs */
-        .breadcrumb {
-            padding: 1rem 5%;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-            margin-top: 80px;
-        }
-        
-        .breadcrumb ol {
-            display: flex;
-            list-style: none;
-            gap: 0.5rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .breadcrumb li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .breadcrumb a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--accent);
-        }
-        
-        .breadcrumb li:not(:last-child)::after {
-            content: '/';
-            color: var(--text-secondary);
-        }
-        
         /* Responsive Design */
         @media (max-width: 992px) {
             .blog-post {
@@ -731,10 +622,6 @@
             
             main {
                 padding-top: 140px;
-            }
-            
-            .breadcrumb {
-                margin-top: 120px;
             }
             
             .blog-post h1 {
@@ -784,23 +671,6 @@
                 gap: 0.5rem;
             }
         }
-        
-        /* Print Styles */
-        @media print {
-            header, footer, .feedback-section {
-                display: none;
-            }
-            
-            body {
-                background: white;
-                color: black;
-            }
-            
-            .blog-post {
-                max-width: 100%;
-                padding: 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -820,29 +690,18 @@
     </nav>
 </header>
 
-<!-- Breadcrumb Navigation -->
-<nav class="breadcrumb" aria-label="Breadcrumb">
-    <ol>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li>Gesture-Controlled 3D Particle System</li>
-    </ol>
-</nav>
-
 <main>
-    <article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
-        <h1 itemprop="headline">Building a Gesture-Controlled 3D Particle System with Computer Vision</h1>
+    <article class="blog-post">
+        <h1>Building a Gesture-Controlled 3D Particle System with Computer Vision</h1>
         
         <div class="post-meta">
             <div class="meta-item">
                 <i class="fas fa-calendar"></i>
-                <time datetime="2024-06-15" itemprop="datePublished">June 15, 2024</time>
+                <time datetime="2024-06-15">June 15, 2024</time>
             </div>
             <div class="meta-item">
                 <i class="fas fa-user"></i>
-                <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-                    <span itemprop="name">Hassan Raza</span>
-                </span>
+                <span>Hassan Raza</span>
             </div>
             <div class="meta-item">
                 <i class="fas fa-clock"></i>
@@ -854,7 +713,7 @@
             </div>
         </div>
         
-        <div class="post-content" itemprop="articleBody">
+        <div class="post-content">
             <div class="info-box">
                 <p><strong>TL;DR:</strong> I built ParticleSync – a real-time gesture-controlled 3D particle system using Three.js and MediaPipe. It responds to hand gestures through your webcam, allowing natural interaction with 15,000+ particles. Try the <a href="https://hassanraza.tech/projects/particlesync" target="_blank">live demo</a>!</p>
             </div>
@@ -895,34 +754,6 @@
             <h2>How Gesture Recognition Works</h2>
             <p>MediaPipe Hands detects 21 landmarks per hand, including fingertips and joints. From these points, I derive meaningful gestures by measuring distances and positions between specific landmarks.</p>
             
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="language-label">JavaScript</span>
-                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                </div>
-                <pre><code class="language-javascript">// Example: Pinch detection logic
-function detectPinchGesture(landmarks) {
-    const thumbTip = landmarks[4];    // Thumb tip
-    const indexTip = landmarks[8];    // Index finger tip
-    const middleTip = landmarks[12];  // Middle finger tip
-    
-    // Calculate distances between fingertips
-    const thumbIndexDistance = calculateDistance(thumbTip, indexTip);
-    const thumbMiddleDistance = calculateDistance(thumbTip, middleTip);
-    
-    // Pinch detected if distance is below threshold
-    const PINCH_THRESHOLD = 0.05;
-    return thumbIndexDistance < PINCH_THRESHOLD;
-}
-
-function calculateDistance(point1, point2) {
-    const dx = point1.x - point2.x;
-    const dy = point1.y - point2.y;
-    const dz = point1.z - point2.z;
-    return Math.sqrt(dx*dx + dy*dy + dz*dz);
-}</code></pre>
-            </div>
-            
             <p>The index finger acts as a live interaction cursor inside the 3D space, while the relationship between other fingers determines the gesture type.</p>
             <p>This approach allows the system to feel responsive while remaining lightweight and efficient.</p>
             
@@ -933,21 +764,21 @@ function calculateDistance(point1, point2) {
                 <div class="gesture-card">
                     <div class="gesture-icon">🖐</div>
                     <h3>Open Hand</h3>
-                    <p>Particle Repulsion</p>
+                    <p><strong>Particle Repulsion</strong></p>
                     <p>Opening your hand pushes nearby particles away, creating a smooth scattering effect.</p>
                 </div>
                 
                 <div class="gesture-card">
                     <div class="gesture-icon">👌</div>
                     <h3>Pinch</h3>
-                    <p>Particle Attraction</p>
+                    <p><strong>Particle Attraction</strong></p>
                     <p>Pinching your thumb and index finger pulls particles inward, simulating a gravity-like force.</p>
                 </div>
                 
                 <div class="gesture-card">
                     <div class="gesture-icon">✌</div>
                     <h3>Victory Sign</h3>
-                    <p>Shape Switching</p>
+                    <p><strong>Shape Switching</strong></p>
                     <p>Making a victory sign cycles through different particle templates with a built-in cooldown to avoid accidental triggers.</p>
                 </div>
             </div>
@@ -967,30 +798,6 @@ function calculateDistance(point1, point2) {
             
             <p>Instead of instantly teleporting particles, each shape defines a target position for every particle. Smooth interpolation ensures fluid transitions that feel organic rather than mechanical.</p>
             
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="language-label">JavaScript</span>
-                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                </div>
-                <pre><code class="language-javascript">// Particle position interpolation
-function updateParticlePositions() {
-    particles.forEach((particle, index) => {
-        // Get target position for current shape
-        const targetPos = getTargetPosition(index);
-        
-        // Smooth interpolation
-        particle.position.x += (targetPos.x - particle.position.x) * 0.1;
-        particle.position.y += (targetPos.y - particle.position.y) * 0.1;
-        particle.position.z += (targetPos.z - particle.position.z) * 0.1;
-        
-        // Add subtle noise for organic feel
-        particle.position.x += (Math.random() - 0.5) * 0.01;
-        particle.position.y += (Math.random() - 0.5) * 0.01;
-        particle.position.z += (Math.random() - 0.5) * 0.01;
-    });
-}</code></pre>
-            </div>
-            
             <p>Subtle noise and motion are added to prevent the system from looking static or artificial.</p>
             
             <h2>Performance & Optimization</h2>
@@ -998,16 +805,10 @@ function updateParticlePositions() {
             
             <ul>
                 <li>GPU-accelerated rendering via WebGL</li>
-                <li>Instanced rendering for efficient particle drawing</li>
                 <li>Efficient buffer updates</li>
                 <li>Controlled interpolation speeds</li>
                 <li>Minimal per-frame calculations</li>
-                <li>RequestAnimationFrame for smooth animation</li>
             </ul>
-            
-            <div class="info-box success">
-                <p><strong>Optimization Tip:</strong> Using Three.js's <code>InstancedBufferGeometry</code> reduced draw calls from 15,000 to just 1, boosting performance by 100x!</p>
-            </div>
             
             <p>The result is a smooth experience across most modern browsers without sacrificing visual quality.</p>
             
@@ -1015,11 +816,10 @@ function updateParticlePositions() {
             <p>This project wasn't without its challenges:</p>
             
             <ul>
-                <li><strong>False gesture detection</strong> - Implemented confidence thresholds and temporal smoothing</li>
-                <li><strong>2D to 3D mapping</strong> - Used perspective projection and depth estimation</li>
-                <li><strong>Performance under load</strong> - Optimized particle rendering and gesture detection loops</li>
-                <li><strong>Natural gesture design</strong> - Conducted user testing to refine gesture recognition</li>
-                <li><strong>Cross-browser compatibility</strong> - Ensured WebGL and MediaPipe support across browsers</li>
+                <li>Preventing false gesture detection</li>
+                <li>Mapping 2D camera input into meaningful 3D space</li>
+                <li>Maintaining stable performance under heavy particle loads</li>
+                <li>Designing gestures that feel intuitive rather than forced</li>
             </ul>
             
             <p>Each obstacle pushed me to better understand how real-time AI systems behave in the wild, not just in controlled demos.</p>
@@ -1033,26 +833,19 @@ function updateParticlePositions() {
                 <li>Real-time AI inference</li>
                 <li>Interactive graphics systems</li>
                 <li>Human-centered interface design</li>
-                <li>Performance optimization for WebGL</li>
-                <li>Gesture-based UX principles</li>
             </ul>
             
             <p>Projects like this help bridge the gap between theory and real-world application.</p>
-            
-            <div class="info-box warning">
-                <p><strong>Important:</strong> This project requires camera access for full interaction. No data is stored or transmitted - all processing happens locally in your browser.</p>
-            </div>
             
             <h2>What I Want to Build Next</h2>
             <p>Some future ideas for ParticleSync include:</p>
             
             <ul>
-                <li>Multi-hand interaction for collaborative experiences</li>
-                <li>Advanced gesture recognition with machine learning</li>
+                <li>Multi-hand interaction</li>
+                <li>Advanced gesture recognition</li>
                 <li>Mobile and touch optimization</li>
                 <li>Audio-reactive particle behavior</li>
-                <li>Custom shape imports (GLTF, OBJ formats)</li>
-                <li>Export functionality for particle animations</li>
+                <li>Custom shape imports</li>
             </ul>
             
             <p>This project is still evolving, and I'm excited to continue pushing it further.</p>
@@ -1098,38 +891,25 @@ function updateParticlePositions() {
             <form id="blogFeedbackForm" action="https://formspree.io/f/mzzgarzr" method="POST">
                 <input type="hidden" name="_subject" value="Blog Feedback - Gesture Controlled 3D Particle System">
                 <input type="hidden" name="blog_post" value="gesture-controlled-3d-particle-system">
-                <input type="hidden" name="page_url" value="https://hassanraza.tech/blog/gesture-controlled-3d-particle-system.html">
                 
                 <div class="form-group">
                     <label for="blogName" class="form-label">Your Name *</label>
-                    <input type="text" id="blogName" name="name" class="form-control" required aria-required="true">
+                    <input type="text" id="blogName" name="name" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="blogEmail" class="form-label">Your Email *</label>
-                    <input type="email" id="blogEmail" name="email" class="form-control" required aria-required="true">
+                    <input type="email" id="blogEmail" name="email" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="blogMessage" class="form-label">Your Feedback *</label>
                     <textarea id="blogMessage" name="message" class="form-control" 
                               placeholder="What did you think about this project? Any technical questions, suggestions, or ideas for improvement?" 
-                              required aria-required="true"></textarea>
+                              required></textarea>
                 </div>
                 
-                <div class="form-group">
-                    <label for="blogInterest" class="form-label">What interests you most? (Optional)</label>
-                    <select id="blogInterest" name="interest" class="form-control">
-                        <option value="">Select an option</option>
-                        <option value="threejs">Three.js & WebGL</option>
-                        <option value="computervision">Computer Vision</option>
-                        <option value="ai">AI & Machine Learning</option>
-                        <option value="webdev">Web Development</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <button type="submit" class="form-submit" aria-label="Submit feedback">
+                <button type="submit" class="form-submit">
                     Send Feedback <i class="fas fa-paper-plane"></i>
                 </button>
                 
@@ -1144,13 +924,13 @@ function updateParticlePositions() {
 <footer>
     <div class="footer-name">Hassan Raza</div>
     <div class="social-links">
-        <a href="https://github.com/hvssanraza" target="_blank" rel="noopener noreferrer nofollow" aria-label="GitHub">
+        <a href="https://github.com/hvssanraza" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/codehassanraza/" target="_blank" rel="noopener noreferrer nofollow" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/codehassanraza/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <i class="fab fa-linkedin-in"></i>
         </a>
-        <a href="https://instagram.com/hassanrazamusic" target="_blank" rel="noopener noreferrer nofollow" aria-label="Instagram">
+        <a href="https://instagram.com/hassanrazamusic" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <i class="fab fa-instagram"></i>
         </a>
         <a href="mailto:codehassanraza@gmail.com" aria-label="Email">
@@ -1163,9 +943,6 @@ function updateParticlePositions() {
         <a href="cookie-policy.html">Cookie Policy</a>
     </div>
     <p>&copy; <span id="currentYear"></span> Hassan Raza. All rights reserved.</p>
-    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">
-        Built with Three.js & MediaPipe | Optimized for Chrome
-    </p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -1217,27 +994,6 @@ function updateParticlePositions() {
         localStorage.setItem("theme", newTheme);
     });
     
-    // Copy code functionality
-    function copyCode(button) {
-        const codeBlock = button.closest('.code-block');
-        const code = codeBlock.querySelector('code').textContent;
-        
-        navigator.clipboard.writeText(code).then(() => {
-            const originalText = button.textContent;
-            button.textContent = 'Copied!';
-            button.style.background = 'var(--success)';
-            button.style.color = 'white';
-            button.style.borderColor = 'var(--success)';
-            
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.style.background = '';
-                button.style.color = '';
-                button.style.borderColor = '';
-            }, 2000);
-        });
-    }
-    
     // Intersection Observer for animations
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -1276,14 +1032,8 @@ function updateParticlePositions() {
                             <i class="fas fa-check-circle"></i>
                             <h3>Thank You!</h3>
                             <p>Your feedback has been sent successfully. I'll get back to you soon!</p>
-                            <p style="font-size: 0.9rem; margin-top: 1rem;">Redirecting to blog in 5 seconds...</p>
                         </div>
                     `;
-                    
-                    // Redirect to blog page after 5 seconds
-                    setTimeout(() => {
-                        window.location.href = 'blog.html';
-                    }, 5000);
                 } else {
                     throw new Error('Form submission failed');
                 }
@@ -1311,15 +1061,6 @@ function updateParticlePositions() {
     const readingTimeElement = document.querySelector('.reading-time');
     if (readingTimeElement) {
         readingTimeElement.textContent = `${readingTime} min read`;
-    }
-    
-    // Add schema markup for reading time
-    const metaContainer = document.querySelector('.post-meta');
-    if (metaContainer) {
-        const timeMeta = document.createElement('meta');
-        timeMeta.setAttribute('itemprop', 'timeRequired');
-        timeMeta.setAttribute('content', `PT${readingTime}M`);
-        metaContainer.appendChild(timeMeta);
     }
 </script>
 
